@@ -1,0 +1,30 @@
+flowchart TB
+    customer[Customer] --> ui
+    staff[Support staff and administrator] --> ui
+    ui[React and TypeScript browser UI<br/>Catalog, owned orders, chat, staff inbox, administration]
+    ui -->|Same-origin JSON, session cookie, CSRF writes| api
+
+    subgraph backend[FastAPI modular monolith]
+        api[API and authentication<br/>Roles, ownership, validation]
+        api --> support[Conversation and support workflows]
+        api --> core[Catalog, orders and admin services]
+        support --> policy[Backend policy and routing rules<br/>Proposal checks, idempotency, queue and claim]
+        support --> classify[Local intent classifier<br/>TF-IDF plus logistic regression and rules]
+        support --> retrieve[Approved latest-document retrieval]
+        retrieve --> local[Cached local CPU sentence transformer<br/>Explicit TF-IDF fallback]
+        retrieve --> adapter[Optional guarded generation adapter<br/>Free route checks, redaction, bounded requests]
+        adapter --> gate[Recheck assistant ownership<br/>before publishing an answer]
+        policy --> persistence[SQLAlchemy and Alembic<br/>Transactions, unique keys, order version checks]
+        core --> persistence
+        support --> persistence
+        retrieve --> persistence
+    end
+
+    persistence --> db[(SQLite WAL default<br/>Optional configured PostgreSQL)]
+    adapter -. Optional HTTPS only .-> router[OpenRouter reviewed free model route<br/>External service exception]
+    cache[(Local reviewed model files)] -. No implicit download .-> local
+    data[(Synthetic training and evaluation data)] --> classify
+    db --> audit[Audit records and source versions]
+    adapter --> log[Model, prompt, source, latency and outcome log metadata]
+    note[No real checkout, charge, refund or carrier API.<br/>pgvector indexing is deferred; retrieval vectors are in process.]
+    db --- note

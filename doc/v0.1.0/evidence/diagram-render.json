@@ -1,0 +1,51 @@
+[
+  {
+    "file": "component-architecture.svg",
+    "width": 921.609375,
+    "height": 1652.140625,
+    "labels": 19,
+    "labelsOutsideCanvas": 0
+  },
+  {
+    "file": "data-model.svg",
+    "width": 2773.28125,
+    "height": 2231.75,
+    "labels": 508,
+    "labelsOutsideCanvas": 0
+  },
+  {
+    "file": "sdlc-process.svg",
+    "width": 469.765625,
+    "height": 2198,
+    "labels": 17,
+    "labelsOutsideCanvas": 0
+  },
+  {
+    "file": "support-sequence.svg",
+    "width": 3000,
+    "height": 3477,
+    "labels": 99,
+    "labelsOutsideCanvas": 0
+  },
+  {
+    "file": "system-context.svg",
+    "width": 1550.921875,
+    "height": 456.609375,
+    "labels": 17,
+    "labelsOutsideCanvas": 0
+  },
+  {
+    "file": "ticket-lifecycle.svg",
+    "width": 1028.140625,
+    "height": 1200,
+    "labels": 24,
+    "labelsOutsideCanvas": 0
+  },
+  {
+    "file": "use-cases.svg",
+    "width": 1066.34375,
+    "height": 1941,
+    "labels": 20,
+    "labelsOutsideCanvas": 0
+  }
+]

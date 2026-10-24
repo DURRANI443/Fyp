@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant Customer as Existing customer tab
+    participant Staff as Account-switching tab
+    participant API as Local API
+    participant Storage as Browser storage event
+    Note over Customer,Staff: Same browser profile shares one session cookie
+    Staff->>API: Sign out, then sign in as staff
+    API-->>Staff: Updated shared session cookie
+    Staff->>Staff: Set current session, cancel older requests
+    Staff->>Storage: Publish random invalidation marker
+    Storage-->>Customer: Account changed in another tab
+    Customer->>Customer: Clear workspace and CSRF and abort pending requests
+    Customer->>Customer: Cancel poll timers and reject late responses
+    Note over Customer: Show sign-in and session-change explanation
+    Staff->>API: GET staff ticket, claim, reply
+    API-->>Staff: Team-authorized ticket and conversation
+    Note over Customer,API: Customer ownership checks remain enforced

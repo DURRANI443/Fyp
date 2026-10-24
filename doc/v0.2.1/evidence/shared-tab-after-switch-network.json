@@ -1,0 +1,67 @@
+{
+  "observation_ms": 11929,
+  "customerRequests": [],
+  "failures": [],
+  "network": [
+    {
+      "tab": "new-staff",
+      "method": "POST",
+      "path": "/api/staff/tickets/68c8dd40-1d2c-4bf7-8c7d-e03065654822/claim",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "GET",
+      "path": "/api/staff/tickets/68c8dd40-1d2c-4bf7-8c7d-e03065654822",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "GET",
+      "path": "/api/staff/tickets",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "POST",
+      "path": "/api/staff/tickets/68c8dd40-1d2c-4bf7-8c7d-e03065654822/messages",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "GET",
+      "path": "/api/staff/tickets/68c8dd40-1d2c-4bf7-8c7d-e03065654822",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "GET",
+      "path": "/api/staff/tickets",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "GET",
+      "path": "/api/staff/tickets",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "GET",
+      "path": "/api/staff/tickets/68c8dd40-1d2c-4bf7-8c7d-e03065654822",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "GET",
+      "path": "/api/staff/tickets/68c8dd40-1d2c-4bf7-8c7d-e03065654822",
+      "status": 200
+    },
+    {
+      "tab": "new-staff",
+      "method": "GET",
+      "path": "/api/staff/tickets",
+      "status": 200
+    }
+  ]
+}

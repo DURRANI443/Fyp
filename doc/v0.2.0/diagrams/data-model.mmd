@@ -1,0 +1,148 @@
+erDiagram
+    users ||--o{ sessions : authenticates
+    users ||--o{ orders : owns
+    users ||--o{ conversations : starts
+    users o|--o{ messages : sends
+    users o|--o{ tickets : assigned_to
+    users ||--o{ proposals : confirms
+    users ||--o{ return_requests : requests
+    users ||--o{ idempotency_records : scopes
+    users o|--o{ audit_events : acts
+    products ||--o{ order_items : snapshots
+    orders ||--o{ order_items : contains
+    orders ||--o{ proposals : changes
+    orders ||--o{ return_requests : has
+    order_items o|--o{ proposals : optional_item
+    order_items ||--o{ return_requests : returns
+    conversations ||--o{ messages : retains
+    conversations ||--o| tickets : unique_ticket
+    conversations o|--o{ proposals : optional_context
+
+    users {
+        string id PK
+        string email UK
+        string name
+        string password_hash
+        string role
+        json teams
+        boolean available
+    }
+    sessions {
+        string id PK
+        string user_id FK
+        string token_hash UK
+        string csrf_token
+        datetime expires_at
+    }
+    products {
+        string id PK
+        string name
+        string category
+        text description
+        integer price_cents
+        string currency
+        integer stock
+        json sizes
+    }
+    orders {
+        string id PK
+        string number UK
+        string customer_id FK
+        string status
+        string shipping_status
+        string tracking_number
+        datetime created_at
+        datetime delivered_at
+        integer total_cents
+        string currency
+        integer version
+    }
+    order_items {
+        string id PK
+        string order_id FK
+        string product_id FK
+        string name
+        integer quantity
+        integer price_cents
+    }
+    conversations {
+        string id PK
+        string customer_id FK
+        string title
+        string mode
+        json context
+        datetime created_at
+        datetime updated_at
+    }
+    messages {
+        string id PK
+        string conversation_id FK
+        string sender_id FK
+        string role
+        text content
+        string mode
+        json meta
+        string client_message_id
+        datetime created_at
+    }
+    tickets {
+        string id PK
+        string conversation_id FK,UK
+        string team
+        string priority
+        string status
+        string assignee_id FK
+        text summary
+        text routing_reason
+        datetime created_at
+        datetime updated_at
+    }
+    proposals {
+        string id PK
+        string user_id FK
+        string conversation_id FK
+        string order_id FK
+        string kind
+        string item_id FK
+        integer quantity
+        text reason
+        string status
+        integer order_version
+        string policy_version
+        datetime expires_at
+        json result
+    }
+    return_requests {
+        string id PK
+        string user_id FK
+        string order_id FK
+        string item_id FK
+        integer quantity
+        text reason
+        string status
+        datetime created_at
+    }
+    idempotency_records {
+        string id PK
+        string user_id FK
+        string key
+        string fingerprint
+        json result
+    }
+    knowledge_documents {
+        string id PK
+        string key
+        string title
+        text content
+        string category
+        integer version
+        boolean approved
+        datetime created_at
+    }
+    audit_events {
+        string id PK
+        string actor_id FK
+        string event_type
+        json details
+        datetime created_at
+    }

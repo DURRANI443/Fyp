@@ -1,0 +1,40 @@
+flowchart TB
+    incoming[Customer message and client message ID] --> auth[Authenticate, enforce CSRF<br/>and conversation ownership]
+    auth --> duplicate{Existing client message ID?}
+    duplicate -->|Same content| existing[Return persisted conversation]
+    duplicate -->|Different content| conflict[Reject conflict]
+    duplicate -->|New message| mode{Conversation mode}
+    mode -->|Closed| closed[Reject; start a new conversation]
+    mode -->|Pending human or human owned| queued[Persist message for staff<br/>No automated reply]
+    mode -->|Assistant| classify[Persist customer turn<br/>Classify with local model and rules]
+    classify --> choice{Supported intent and context}
+    choice -->|Order workflow| order[Fetch only authenticated owner's order<br/>Clarify order, item or return reason]
+    order --> action{Eligible material action?}
+    action -->|Yes| preview[Create expiring action proposal<br/>No order change yet]
+    preview --> confirm[Customer explicitly confirms<br/>with scoped idempotency key]
+    confirm --> recheck[Recheck ownership, expiry, policy,<br/>order version, item and quantity]
+    recheck -->|Changed or ineligible| rejected[Reject and require a fresh review]
+    recheck -->|Eligible| transaction[Transaction and version compare-and-set<br/>Persist result, idempotency and audit]
+    transaction -->|Cancellation| cancel[Cancel synthetic order once]
+    transaction -->|Return| returned[Create requested return<br/>No refund issued]
+    returned --> ticket
+    action -->|Status information| factual[Prepare database-backed status]
+    action -->|Exception needs staff| ticket
+    choice -->|Policy question| retrieve[Retrieve latest approved evidence<br/>with document and version IDs]
+    choice -->|Product question| catalog[Read current catalog facts<br/>Price, stock and product description]
+    retrieve --> evidence{Useful evidence?}
+    evidence -->|No| ticket
+    evidence -->|Yes| release[Commit transaction before awaiting generation]
+    release --> generate[Optional guarded OpenRouter answer<br/>or labeled local policy excerpt]
+    generate --> publish{Still in assistant mode?<br/>Atomic publication check}
+    factual --> publish
+    catalog --> publish
+    publish -->|Yes| reply[Persist answer and citations<br/>Return conversation]
+    publish -->|No| suppress[Discard late automated answer]
+    choice -->|Human, unknown, billing or escalation| ticket[Create or reuse ticket<br/>Team, priority, reason and summary]
+    ticket --> pending[Handoff pending: assistant paused<br/>Ticket remains queued until claimed]
+    pending --> claim[Authorized available staff claims atomically]
+    claim --> owned[Human owned: staff replies<br/>and reviews requested returns]
+    owned --> resolve{Staff explicitly resolves}
+    resolve -->|Return to assistant| resume[Assistant mode resumes]
+    resolve -->|Close| finished[Closed conversation]

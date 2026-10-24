@@ -1,0 +1,23 @@
+%% Planned system context, v0.1.0, 2026-10-24. No application is implemented.
+flowchart LR
+    customer[Customer]
+    support[Support staff]
+    admin[Administrator]
+    fixtures[Synthetic catalog, orders, and policy fixtures]
+
+    subgraph local[Planned local project boundary]
+        system[Demo store and AI support system]
+        database[(PostgreSQL and pgvector)]
+        models[Local intent model and embedding model]
+    end
+
+    openrouter[OpenRouter: external service exception]
+
+    customer -->|Browse, chat, and owned-order requests| system
+    support -->|Accept tickets and respond| system
+    admin -->|Manage approved knowledge, roles, and rules| system
+    fixtures -->|Development and evaluation data| system
+    system -->|Persist authorized workflows and audit events| database
+    system -->|Classify intent and embed locally| models
+    system -->|Backend only: reviewed free model route| openrouter
+    openrouter -->|Grounded answer draft or service failure| system

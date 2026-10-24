@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.svg text eol=lf
+*.png binary
+*.pdf binary
+# Captured SDLC hashes cover exact bytes, including original line endings.
+doc/v*/** -text

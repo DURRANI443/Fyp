@@ -1,0 +1,26 @@
+[
+  {
+    "file": "architecture.svg",
+    "width": 920.578125,
+    "height": 2239.296875,
+    "labels": 24,
+    "labelsOutsideCanvas": 0,
+    "outside": []
+  },
+  {
+    "file": "support-flow.svg",
+    "width": 1451.6875,
+    "height": 4432.59375,
+    "labels": 58,
+    "labelsOutsideCanvas": 0,
+    "outside": []
+  },
+  {
+    "file": "data-model.svg",
+    "width": 2015.734375,
+    "height": 2425.5,
+    "labels": 269,
+    "labelsOutsideCanvas": 0,
+    "outside": []
+  }
+]

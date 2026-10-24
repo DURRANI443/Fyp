@@ -1,0 +1,14 @@
+# Replace YOUR_BACKEND_HOST with a DNS hostname pointing to the Oracle public IP.
+YOUR_BACKEND_HOST {
+    encode zstd gzip
+    @api path /api/*
+    handle @api {
+        request_body {
+            max_size 64KB
+        }
+        reverse_proxy 127.0.0.1:8000
+    }
+    handle {
+        respond "Northstar API. Use the Vercel frontend." 404
+    }
+}

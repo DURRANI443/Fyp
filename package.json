@@ -1,0 +1,23 @@
+{
+  "name": "ecommerce-support-fyp-docs",
+  "version": "0.2.1",
+  "private": true,
+  "description": "Versioned SDLC documentation tooling for the Northstar support FYP",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "docs:render": "node scripts/render-diagrams.mjs",
+    "docs:check": "python scripts/check_docs.py"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "12.0.0",
+    "puppeteer": "25.16.0"
+  },
+  "overrides": {
+    "@mermaid-js/mermaid-cli": {
+      "katex": "0.18.10"
+    }
+  }
+}

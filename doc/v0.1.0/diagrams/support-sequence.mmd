@@ -1,0 +1,96 @@
+%% Planned support sequence, v0.1.0, 2026-10-24.
+sequenceDiagram
+    actor Customer
+    participant UI as React interface
+    participant API as FastAPI orchestrator
+    participant DB as Local database
+    participant Router as Classifier and routing rules
+    participant Retrieval as Local knowledge retrieval
+    participant Adapter as Guarded model adapter
+    participant OR as OpenRouter
+    actor Staff as Support staff
+
+    Customer->>UI: Send support message
+    UI->>API: Message with session credential
+    API->>DB: Validate session, permissions, and conversation ownership
+    DB-->>API: Authorized context or denial
+    alt Access denied or authentication required
+        API-->>UI: Explain required sign-in without exposing private data
+    else Authorized
+        API->>DB: Store incoming message and read ownership state
+        alt Conversation is handoff_pending or human_owned
+            API->>DB: Append to waiting ticket or assigned staff inbox
+            API-->>UI: Transport acknowledgment that message was recorded
+            Note over API,OR: No assistant generation or bot reply in either handoff state
+        else Assistant owns conversation
+            API->>Router: Classify intent and apply routing rules
+            Router-->>API: Self-service route or handoff reason
+            alt Customer requests a person or routing requires review
+                API->>DB: Create or reuse active ticket, set handoff_pending, and record summary
+                API-->>UI: Acknowledge handoff and show actual queue status
+            else Bounded self-service request
+                opt Order-specific request
+                    API->>DB: Verify order ownership and fetch current allowed facts
+                    DB-->>API: Permitted facts or non-disclosing rejection
+                end
+                API->>Retrieval: Retrieve approved policy chunks when required
+                Retrieval->>DB: Search versioned knowledge with local embeddings
+                DB-->>Retrieval: Approved chunks and source versions
+                Retrieval-->>API: Evidence or evidence unavailable
+                alt Authorized facts or policy evidence sufficient
+                    API->>Adapter: Minimal redacted context and bounded answer request
+                    Adapter->>OR: Check selected route pricing metadata
+                    OR-->>Adapter: Metadata or failure
+                    Note over Adapter: Require explicit allowlist, reviewed license, and zero-cost eligibility
+                    alt Route is eligible
+                        Adapter->>OR: Request grounded answer with bounded timeout and retries
+                        alt Model returns a usable answer
+                            OR-->>Adapter: Answer draft
+                            Adapter-->>API: Draft with model and outcome metadata
+                            API->>API: Check evidence references and response constraints
+                            alt Answer passes checks
+                                API->>DB: Atomically recheck conversation ownership before publishing
+                                alt Assistant still owns conversation
+                                    API->>DB: Save answer, citations, and generation metadata
+                                    API-->>UI: Answer with supporting references
+                                else Handoff started or staff claimed conversation
+                                    API->>DB: Record suppressed generation outcome
+                                    Note over API,UI: Do not publish the in-flight assistant answer
+                                end
+                            else Answer cannot be supported
+                                API->>DB: Record failure and create or reuse handoff ticket
+                                API-->>UI: Explain limitation and acknowledge handoff
+                            end
+                        else Timeout, quota, or model error
+                            OR-->>Adapter: Failure or unavailable response
+                            Adapter-->>API: Explicit generation failure
+                            API->>DB: Record outcome and create or reuse handoff ticket
+                            API-->>UI: Useful deterministic fallback and handoff status
+                        end
+                    else Route unavailable or eligibility unverified
+                        Adapter-->>API: Generation disabled without paid fallback
+                        API->>DB: Record reason and create or reuse handoff ticket
+                        API-->>UI: Useful deterministic fallback and handoff status
+                    end
+                else Missing evidence or unauthorized order context
+                    API->>DB: Create or reuse ticket with safe context and reason
+                    API-->>UI: Request needed information or acknowledge handoff
+                end
+            end
+        end
+    end
+
+    Note over API,DB: Every new handoff atomically records the ticket and sets handoff_pending
+
+    opt A handoff ticket is waiting
+        Staff->>API: Accept ticket through authorized dashboard
+        API->>DB: Atomically assign ticket and set human_owned
+        DB-->>API: Ownership recorded
+        API-->>Staff: History, evidence, attempted actions, and summary
+        Staff->>API: Send support response
+        API->>DB: Save staff message and audit event
+        API-->>UI: Human support response
+    end
+
+    Note over API,DB: Every automated reply path rechecks ownership before publishing
+    Note over API,DB: Material changes use a separate confirmed, revalidated, transactional action workflow

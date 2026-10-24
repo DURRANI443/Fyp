@@ -1,0 +1,181 @@
+%% Planned conceptual ERD, v0.1.0, 2026-10-24. Not a database migration.
+erDiagram
+    USERS {
+        uuid id PK
+        string email UK
+        string password_hash
+        string display_name
+        string status
+        datetime created_at
+    }
+    ROLES {
+        uuid id PK
+        string name UK
+    }
+    USER_ROLES {
+        uuid user_id PK, FK
+        uuid role_id PK, FK
+    }
+    SESSIONS {
+        uuid id PK
+        uuid user_id FK
+        string token_hash UK
+        datetime expires_at
+        datetime revoked_at
+    }
+    PRODUCTS {
+        uuid id PK
+        string sku UK
+        string name
+        decimal price
+        string currency
+        int stock_quantity
+        boolean active
+    }
+    ORDERS {
+        uuid id PK
+        uuid customer_id FK
+        string order_number UK
+        string order_status
+        string fulfillment_status
+        string simulated_payment_status
+        string demo_shipping_status
+        decimal total
+        string currency
+        datetime placed_at
+    }
+    ORDER_ITEMS {
+        uuid id PK
+        uuid order_id FK
+        uuid product_id FK
+        string product_name_snapshot
+        int quantity
+        decimal unit_price_snapshot
+    }
+    CONVERSATIONS {
+        uuid id PK
+        uuid customer_id FK
+        string ownership_state
+        string language
+        datetime created_at
+    }
+    MESSAGES {
+        uuid id PK
+        uuid conversation_id FK
+        uuid sender_user_id FK
+        string sender_type
+        text body
+        string model_id
+        string prompt_version
+        string generation_outcome
+        datetime created_at
+    }
+    TEAMS {
+        uuid id PK
+        string name UK
+        boolean accepting_tickets
+    }
+    TEAM_MEMBERS {
+        uuid team_id PK, FK
+        uuid user_id PK, FK
+        boolean available
+    }
+    TICKETS {
+        uuid id PK
+        uuid conversation_id FK
+        uuid team_id FK
+        string status
+        string intent
+        string priority
+        string routing_rule_version
+        text handoff_reason
+        text handoff_summary
+        datetime created_at
+        datetime resolved_at
+    }
+    TICKET_ASSIGNMENTS {
+        uuid id PK
+        uuid ticket_id FK
+        uuid team_id FK
+        uuid assignee_user_id FK
+        uuid assigned_by_user_id FK
+        text reason
+        datetime assigned_at
+        datetime ended_at
+    }
+    KNOWLEDGE_DOCUMENTS {
+        uuid id PK
+        string document_key
+        int version
+        string title
+        text content
+        string content_hash
+        string approval_status
+        uuid approved_by_user_id FK
+        datetime approved_at
+    }
+    KNOWLEDGE_CHUNKS {
+        uuid id PK
+        uuid document_id FK
+        int chunk_index
+        text content
+        string embedding_model
+        string embedding_version
+        vector embedding
+    }
+    MESSAGE_CITATIONS {
+        uuid message_id PK, FK
+        uuid chunk_id PK, FK
+    }
+    ACTION_REQUESTS {
+        uuid id PK
+        uuid conversation_id FK
+        uuid order_id FK
+        uuid requested_by_user_id FK
+        string action_type
+        string status
+        string idempotency_key UK
+        json requested_parameters
+        string policy_version
+        datetime confirmed_at
+        datetime executed_at
+        text result_summary
+    }
+    AUDIT_EVENTS {
+        uuid id PK
+        uuid actor_user_id FK
+        uuid action_request_id FK
+        string actor_type
+        string event_type
+        string entity_type
+        uuid entity_id
+        json redacted_details
+        datetime created_at
+    }
+
+    USERS ||--o{ USER_ROLES : receives
+    ROLES ||--o{ USER_ROLES : grants
+    USERS ||--o{ SESSIONS : authenticates
+    USERS ||--o{ ORDERS : owns
+    ORDERS ||--|{ ORDER_ITEMS : contains
+    PRODUCTS ||--o{ ORDER_ITEMS : supplies
+    USERS ||--o{ CONVERSATIONS : starts
+    CONVERSATIONS ||--o{ MESSAGES : contains
+    USERS o|--o{ MESSAGES : authors
+    TEAMS ||--o{ TEAM_MEMBERS : includes
+    USERS ||--o{ TEAM_MEMBERS : joins
+    CONVERSATIONS ||--o{ TICKETS : raises
+    TEAMS o|--o{ TICKETS : queues
+    TICKETS ||--o{ TICKET_ASSIGNMENTS : records
+    TEAMS ||--o{ TICKET_ASSIGNMENTS : receives
+    USERS o|--o{ TICKET_ASSIGNMENTS : accepts
+    USERS o|--o{ TICKET_ASSIGNMENTS : assigns
+    USERS o|--o{ KNOWLEDGE_DOCUMENTS : approves
+    KNOWLEDGE_DOCUMENTS ||--o{ KNOWLEDGE_CHUNKS : splits_into
+    MESSAGES ||--o{ MESSAGE_CITATIONS : cites
+    KNOWLEDGE_CHUNKS ||--o{ MESSAGE_CITATIONS : supports
+    CONVERSATIONS ||--o{ ACTION_REQUESTS : initiates
+    ORDERS o|--o{ ACTION_REQUESTS : concerns
+    USERS ||--o{ ACTION_REQUESTS : requests
+    USERS o|--o{ AUDIT_EVENTS : performs
+    ACTION_REQUESTS o|--o{ AUDIT_EVENTS : produces

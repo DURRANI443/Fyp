@@ -1,0 +1,25 @@
+sequenceDiagram
+    actor C as Customer
+    participant UI as React cart
+    participant API as FastAPI checkout
+    participant DB as Application database
+    C->>UI: Select product, size and quantity
+    UI->>API: Authenticated cart quote
+    API->>DB: Read authoritative price and stock
+    API-->>UI: Totals and review token
+    C->>UI: Confirm simulated payment scenario
+    UI->>API: Cart, shipping, token and idempotency key
+    API->>DB: Serialize customer checkout and find existing result
+    alt Existing matching key
+        DB-->>API: Original result
+    else New attempt
+        API->>DB: Validate reviewed price, sizes and stock
+        alt Simulated decline
+            API->>DB: Store declined attempt and result
+        else Simulated approval
+            API->>DB: Reserve inventory and create owned order and payment
+        end
+        API->>DB: Commit transaction
+    end
+    API-->>UI: Simulated outcome and order when approved
+    UI-->>C: Receipt or decline with retry guidance

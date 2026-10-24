@@ -1,0 +1,111 @@
+{
+  "status": {
+    "classifier": "tfidf_logistic_regression_v1_with_rules",
+    "retrieval": "local_sentence_transformer",
+    "model": null
+  },
+  "retrieval_top_1_accuracy": 1.0,
+  "retrieval_cases": [
+    {
+      "text": "How many days do I have to return unworn clothing?",
+      "expected": "returns",
+      "predicted": "returns",
+      "correct": true,
+      "latency_ms": 60508.01
+    },
+    {
+      "text": "Do my clothes need their original tags for an exchange?",
+      "expected": "returns",
+      "predicted": "returns",
+      "correct": true,
+      "latency_ms": 17.9
+    },
+    {
+      "text": "Where do I find the tracking reference for my parcel?",
+      "expected": "shipping",
+      "predicted": "shipping",
+      "correct": true,
+      "latency_ms": 18.42
+    },
+    {
+      "text": "Which team handles stalled carrier scans?",
+      "expected": "shipping",
+      "predicted": "shipping",
+      "correct": true,
+      "latency_ms": 22.05
+    },
+    {
+      "text": "Can a shipped order be cancelled automatically?",
+      "expected": "cancellation",
+      "predicted": "cancellation",
+      "correct": true,
+      "latency_ms": 31.16
+    },
+    {
+      "text": "Must I confirm before a cancellation changes my order?",
+      "expected": "cancellation",
+      "predicted": "cancellation",
+      "correct": true,
+      "latency_ms": 43.93
+    },
+    {
+      "text": "The delivered product is defective; who helps?",
+      "expected": "damage",
+      "predicted": "damage",
+      "correct": true,
+      "latency_ms": 35.24
+    },
+    {
+      "text": "I received an incomplete item; how do I report it?",
+      "expected": "damage",
+      "predicted": "damage",
+      "correct": true,
+      "latency_ms": 34.32
+    },
+    {
+      "text": "Who investigates a duplicate payment charge?",
+      "expected": "billing",
+      "predicted": "billing",
+      "correct": true,
+      "latency_ms": 21.73
+    },
+    {
+      "text": "Can the assistant move real money for a refund?",
+      "expected": "billing",
+      "predicted": "billing",
+      "correct": true,
+      "latency_ms": 30.08
+    },
+    {
+      "text": "Who is allowed to view my chat history?",
+      "expected": "privacy",
+      "predicted": "privacy",
+      "correct": true,
+      "latency_ms": 17.48
+    },
+    {
+      "text": "Are real customer identities needed in this demonstration?",
+      "expected": "privacy",
+      "predicted": "privacy",
+      "correct": true,
+      "latency_ms": 15.8
+    },
+    {
+      "text": "Explain the chemical composition of Jupiter",
+      "expected": null,
+      "predicted": null,
+      "correct": true,
+      "latency_ms": 24.62
+    }
+  ],
+  "mixed_intent": {
+    "intent": "cancel",
+    "confidence": 0.772,
+    "source": "hybrid_rules",
+    "intents": [
+      "cancel",
+      "tracking"
+    ]
+  },
+  "limitation": "Tiny synthetic smoke corpus, not an independent retrieval benchmark. First query includes cold model load."
+}

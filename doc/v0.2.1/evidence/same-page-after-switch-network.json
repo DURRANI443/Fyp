@@ -1,0 +1,57 @@
+{
+  "observation_ms": 11894,
+  "customerRequests": [],
+  "failures": [],
+  "network": [
+    {
+      "method": "POST",
+      "path": "/api/staff/tickets/f1f581b5-c2e8-45d3-b1a0-a86e40cdd1b8/claim",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/staff/tickets/f1f581b5-c2e8-45d3-b1a0-a86e40cdd1b8",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/staff/tickets",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/staff/tickets/f1f581b5-c2e8-45d3-b1a0-a86e40cdd1b8/messages",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/staff/tickets/f1f581b5-c2e8-45d3-b1a0-a86e40cdd1b8",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/staff/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/staff/tickets/f1f581b5-c2e8-45d3-b1a0-a86e40cdd1b8",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/staff/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/staff/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/staff/tickets/f1f581b5-c2e8-45d3-b1a0-a86e40cdd1b8",
+      "status": 200
+    }
+  ]
+}

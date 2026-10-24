@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "provenance": "AI-assisted synthetic document/query smoke set. This evaluates a tiny fixed demonstration corpus, not real customer retrieval quality.",
+  "documents": [
+    {"id":"returns","key":"returns","title":"Returns and exchanges","version":1,"approved":true,"content":"Unused clothing with its original tags can be returned within 30 days after delivery. Create a return request for staff review. An exchange is subject to availability. A return request does not immediately issue a refund."},
+    {"id":"shipping","key":"shipping","title":"Shipping and tracking","version":1,"approved":true,"content":"Find the current shipping status and tracking reference in your account orders. Delivery estimates depend on the shipment. Delays, missed deliveries and stalled carrier scans are investigated by the logistics support team."},
+    {"id":"cancellation","key":"cancellation","title":"Cancellation rules","version":1,"approved":true,"content":"An order may be cancelled only while its status is processing. Once it has shipped it cannot be cancelled automatically. Review and confirm a cancellation proposal before any order is changed."},
+    {"id":"damage","key":"damage","title":"Damaged or incorrect items","version":1,"approved":true,"content":"If an item arrives broken, defective, incomplete or different from the product ordered, contact the returns team. Identify the affected order and describe what is wrong. Staff review replacement requests."},
+    {"id":"billing","key":"billing","title":"Payments and refunds","version":1,"approved":true,"content":"Billing staff investigate duplicate charges, payment failures, invoices and refund progress. This demonstration store does not collect real card details or move money. Never send your card number or password in chat."},
+    {"id":"privacy","key":"privacy","title":"Customer privacy","version":1,"approved":true,"content":"Use synthetic customer details in this demonstration. Account ownership is checked before viewing order information. Chat history is visible to the account owner and authorized support staff. Never share passwords or payment credentials."}
+  ],
+  "queries": [
+    {"text":"How many days do I have to return unworn clothing?","expected":"returns"},
+    {"text":"Do my clothes need their original tags for an exchange?","expected":"returns"},
+    {"text":"Where do I find the tracking reference for my parcel?","expected":"shipping"},
+    {"text":"Which team handles stalled carrier scans?","expected":"shipping"},
+    {"text":"Can a shipped order be cancelled automatically?","expected":"cancellation"},
+    {"text":"Must I confirm before a cancellation changes my order?","expected":"cancellation"},
+    {"text":"The delivered product is defective; who helps?","expected":"damage"},
+    {"text":"I received an incomplete item; how do I report it?","expected":"damage"},
+    {"text":"Who investigates a duplicate payment charge?","expected":"billing"},
+    {"text":"Can the assistant move real money for a refund?","expected":"billing"},
+    {"text":"Who is allowed to view my chat history?","expected":"privacy"},
+    {"text":"Are real customer identities needed in this demonstration?","expected":"privacy"},
+    {"text":"Explain the chemical composition of Jupiter","expected":null}
+  ]
+}

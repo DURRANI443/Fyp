@@ -1,0 +1,42 @@
+%% Planned use-case view represented as a flowchart, not UML use-case notation.
+%% Baseline v0.1.0, 2026-10-24. Every feature is planned.
+flowchart LR
+    customer[Customer]
+    support[Support staff]
+    admin[Administrator]
+
+    subgraph system[Planned use cases]
+        signon([Authenticate and manage session])
+        browse([Browse products])
+        track([View own order and demo shipping status])
+        ask([Ask policy or product question])
+        change([Cancel eligible demo order or request return])
+        confirm([Confirm material order action])
+        handoff([Request human support])
+        queue([View permitted ticket queues])
+        accept([Accept or transfer ticket ownership])
+        reply([Review context and respond])
+        resolve([Resolve ticket and record outcome])
+        roles([Manage user roles and teams])
+        knowledge([Approve and version knowledge documents])
+        rules([Configure routing and action policies])
+        evaluation([Review audit and evaluation reports])
+    end
+
+    customer --> signon
+    customer --> browse
+    customer --> track
+    customer --> ask
+    customer --> change
+    change -->|Required before execution| confirm
+    customer --> handoff
+    support --> signon
+    support --> queue
+    support --> accept
+    support --> reply
+    support --> resolve
+    admin --> signon
+    admin --> roles
+    admin --> knowledge
+    admin --> rules
+    admin --> evaluation

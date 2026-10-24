@@ -1,0 +1,157 @@
+[
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/system",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/auth/me",
+    "status": 401
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:8001/api/auth/login",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/products",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/conversations",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:8001/api/conversations",
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:8001/api/conversations/a4c91fdf-64bf-47c1-adb7-7b83d9317a79/messages",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/conversations",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:8001/api/conversations/a4c91fdf-64bf-47c1-adb7-7b83d9317a79/handoff",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/conversations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/system",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/auth/me",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/products",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/conversations/a4c91fdf-64bf-47c1-adb7-7b83d9317a79",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:8001/api/auth/logout",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:8001/api/auth/login",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets/5fcd44c3-4e26-43dc-a315-04a6a04ed97d",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:8001/api/staff/tickets/5fcd44c3-4e26-43dc-a315-04a6a04ed97d/claim",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets/5fcd44c3-4e26-43dc-a315-04a6a04ed97d",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:8001/api/staff/tickets/5fcd44c3-4e26-43dc-a315-04a6a04ed97d/messages",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets/5fcd44c3-4e26-43dc-a315-04a6a04ed97d",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/conversations/a4c91fdf-64bf-47c1-adb7-7b83d9317a79",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets/5fcd44c3-4e26-43dc-a315-04a6a04ed97d",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/conversations/a4c91fdf-64bf-47c1-adb7-7b83d9317a79",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/staff/tickets/5fcd44c3-4e26-43dc-a315-04a6a04ed97d",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:8001/api/conversations/a4c91fdf-64bf-47c1-adb7-7b83d9317a79",
+    "status": 404
+  }
+]

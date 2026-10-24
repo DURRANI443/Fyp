@@ -1,0 +1,15 @@
+
+> northstar-support-frontend@0.2.1 test:e2e
+> playwright test --reporter=list
+
+
+Running 6 tests using 1 worker
+
+  ok 1 e2e\session-switch.spec.ts:46:1 › same-page customer to staff switch stops customer polling and preserves the staff reply (15.1s)
+  ok 2 e2e\session-switch.spec.ts:88:1 › another tab changing the shared account clears the old customer workspace and stops polling (17.8s)
+  ok 3 e2e\workflows.spec.ts:11:1 › customer can ask a grounded question and hand off to a staff member (10.5s)
+  ok 4 e2e\workflows.spec.ts:49:1 › orders require confirmation and a return appears in the staff review queue (3.3s)
+  ok 5 e2e\workflows.spec.ts:86:1 › admin can approve knowledge, update routing availability and inspect activity (1.9s)
+  ok 6 e2e\workflows.spec.ts:114:1 › mobile customer can navigate, inspect order eligibility and use support without overflow (1.0s)
+
+  6 passed (1.1m)

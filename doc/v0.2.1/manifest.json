@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "version": "v0.2.1",
+  "captured_on": "2026-10-24",
+  "timezone": "Asia/Karachi",
+  "algorithm": "sha256",
+  "scope": "documentation baseline; not an application release or supervisor approval",
+  "files": {
+    "CHANGELOG.md": "70381e7cf5b3ce9e053d6cc3ec04e67068b235f3f563fd9ab8a195312e0a3196",
+    "diagrams/session-change.mmd": "75b20977fcdf7039ed258783ee63cf7206543c90b5db0c6d547d4a99ce6fa9c6",
+    "diagrams/session-change.svg": "a130ac8cd0b63ebb5ef701de8561b26472b7f1efa4b06e4d3d5d3f9c69bb6aef",
+    "evidence/browser-tests.txt": "c194c00b64dea2d4c1a2764047de8f1e51eceea44e066322f4feecd773076352",
+    "evidence/new-staff-tab-replied.png": "a1d36e81a196c6d5963297e1483faeded4950e4054bd00a25808ddc9fb8c1d50",
+    "evidence/old-customer-tab-cleared.png": "522c71da57ddcde28bc7a64248389f369ce89658dfc17621fa114e4fa1b81458",
+    "evidence/same-page-after-switch-network.json": "e7f10b50d95dc285ea196b650033a2ea48d938e60b408ba634ad8a506f8b928a",
+    "evidence/shared-tab-after-switch-network.json": "2922a16311414b087e284b091b16b4c061535eea303ab47c31e227545ed4cf77",
+    "evidence/shared-tab-before-1.png": "1d01e8b79a33be7a27ab94f11878fb1c4442db8e949d8892cf9bb82d7958eaf7",
+    "evidence/shared-tab-before-2.png": "365e2aa95cbd222a07451d9257bca06c85a2c678e4d58e2a426cf3645785e31e",
+    "evidence/shared-tab-before-network.json": "ae13422ad27b065cb7d2c1ba6169bb5ceca67f41c95f5f61065e68893ab7e08b",
+    "README.md": "2d8fc65470c291e44f814b84f4b3a39cb35ce10d3797501f701f5dc4c797c5dc",
+    "verification.md": "f1dd45924a3491d49832e1a9f7a859d7dc44be1e9ad8ef6dcbc883ce3cd0b77f"
+  }
+}

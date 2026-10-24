@@ -1,0 +1,45 @@
+# Local secrets; track only configuration examples
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python and ML runtime outputs
+.venv/
+.uv/
+.python/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+models/cache/
+data/private/
+
+# JavaScript and generated application output
+node_modules/
+.vercel/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Local databases and service state
+*.db
+*.sqlite
+*.sqlite3
+.local/
+*.log
+
+# Editor / OS state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

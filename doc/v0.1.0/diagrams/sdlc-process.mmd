@@ -1,0 +1,30 @@
+%% Planned iterative SDLC, v0.1.0, 2026-10-24.
+flowchart TD
+    idea[Define problem and select a small increment]
+    requirements[Assign requirement IDs and measurable acceptance targets]
+    design[Update use cases, data model, architecture, and workflows]
+    review[Check traceability, feasibility, privacy, and scope]
+    implement[Implement one end-to-end slice]
+    verify[Run appropriate automated and manual checks]
+    result{Acceptance criteria met?}
+    revise[Record failures and revise the affected design or code]
+    evidence[Record actual commands, results, limitations, and test links]
+    release[Update change log, status, setup guidance, and version index]
+    snapshot[Capture immutable doc version and file-hash manifest]
+    next{More planned work?}
+    complete[Maintain released evidence and project handover]
+
+    idea --> requirements
+    requirements --> design
+    design --> review
+    review --> implement
+    implement --> verify
+    verify --> result
+    result -->|No| revise
+    revise --> design
+    result -->|Yes| evidence
+    evidence --> release
+    release --> snapshot
+    snapshot --> next
+    next -->|Yes, next version| idea
+    next -->|No| complete

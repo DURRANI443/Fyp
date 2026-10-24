@@ -1,0 +1,23 @@
+Date: 2026-10-24 (Asia/Karachi)
+Command: npm run docs:render -- v0.2.0
+Browser: installed Playwright Chromium 1234, launched headlessly through Puppeteer.
+
+Rendered doc\v0.2.0\diagrams\architecture.svg
+Rendered doc\v0.2.0\diagrams\data-model.svg
+Rendered doc\v0.2.0\diagrams\support-flow.svg
+PASS: 3 Mermaid diagrams rendered to SVG.
+
+Post-render inspection:
+- Loaded each local SVG in headless Chromium and measured visible SVG text and
+  foreignObject label bounds against the SVG canvas with a 2-pixel tolerance.
+- Excluded empty zero-area Mermaid table placeholders from label counts.
+- architecture.svg: 24 visible labels; 0 outside canvas.
+- support-flow.svg: 58 visible labels; 0 outside canvas.
+- data-model.svg: 269 visible labels; 0 outside canvas.
+- Saved PNG previews under ignored .local/diagram-preview-v020 and visually
+  inspected architecture, support flow and ER diagram. The full workflow is
+  intentionally tall; the SVG remains scalable for reading and export.
+- Numeric dimensions and bounds results are retained in diagram-render.json.
+
+This check establishes rendering and label containment, not application behavior
+or formal proof that every relationship/flow is complete.

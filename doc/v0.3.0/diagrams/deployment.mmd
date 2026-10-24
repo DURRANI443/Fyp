@@ -1,0 +1,10 @@
+flowchart LR
+    B[Customer, support and admin browser] -->|HTTPS| V[Vercel static React app]
+    V -->|Same-origin /api rewrite over HTTPS| C[Oracle VM: Caddy]
+    C -->|Loopback only| F[FastAPI single worker]
+    F -->|PostgreSQL connection with TLS| S[Supabase session pooler and PostgreSQL]
+    F --> R[Local classifier and retrieval]
+    F -.->|Optional reviewed free route| O[OpenRouter]
+    G[GitHub source and checks] -->|Frontend import| V
+    G -->|Explicit operator update| F
+    E[Backend environment file] --> F

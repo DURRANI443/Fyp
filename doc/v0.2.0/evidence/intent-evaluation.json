@@ -1,0 +1,1952 @@
+{
+  "evaluated_at_utc": "2026-10-24T15:57:42.537484+00:00",
+  "dataset_version": "1.0.0",
+  "dataset_sha256": "3e017e87ff3fb9405e6eec04531167e5cfdf8c88abc1be62ea694acc061af88e",
+  "scikit_learn_version": "1.9.1",
+  "seed": 42,
+  "labels": [
+    "tracking",
+    "return",
+    "cancel",
+    "product",
+    "policy",
+    "damage",
+    "billing",
+    "human",
+    "unknown"
+  ],
+  "model_parameters": {
+    "word_ngrams": [
+      1,
+      2
+    ],
+    "character_word_boundary_ngrams": [
+      3,
+      5
+    ],
+    "feature_weights": {
+      "word": 1.0,
+      "character": 0.55
+    },
+    "logistic_C": 6.0,
+    "class_weight": "balanced",
+    "max_iter": 1000,
+    "confidence_note": "Uncalibrated maximum logistic probability; hybrid rule outputs retain this score, not a rule certainty."
+  },
+  "split_counts": {
+    "train": {
+      "tracking": 16,
+      "return": 16,
+      "cancel": 16,
+      "product": 16,
+      "policy": 16,
+      "damage": 16,
+      "billing": 16,
+      "human": 16,
+      "unknown": 16
+    },
+    "validation": {
+      "tracking": 4,
+      "return": 4,
+      "cancel": 4,
+      "product": 4,
+      "policy": 4,
+      "damage": 4,
+      "billing": 4,
+      "human": 4,
+      "unknown": 4
+    },
+    "test": {
+      "tracking": 6,
+      "return": 6,
+      "cancel": 6,
+      "product": 6,
+      "policy": 6,
+      "damage": 6,
+      "billing": 6,
+      "human": 6,
+      "unknown": 6
+    }
+  },
+  "split_audit": {
+    "group_disjoint": true,
+    "exact_duplicate_count": 0,
+    "cross_split_token_jaccard_at_least_0_7": []
+  },
+  "validation_threshold_search": [
+    {
+      "threshold": 0.18,
+      "macro_f1": 0.5620169953503287
+    },
+    {
+      "threshold": 0.22,
+      "macro_f1": 0.5630751964085297
+    },
+    {
+      "threshold": 0.26,
+      "macro_f1": 0.5421516754850088
+    },
+    {
+      "threshold": 0.28,
+      "macro_f1": 0.5583774250440917
+    },
+    {
+      "threshold": 0.3,
+      "macro_f1": 0.5583774250440917
+    },
+    {
+      "threshold": 0.34,
+      "macro_f1": 0.4366137566137566
+    },
+    {
+      "threshold": 0.38,
+      "macro_f1": 0.4140822140822141
+    },
+    {
+      "threshold": 0.42,
+      "macro_f1": 0.37777777777777777
+    }
+  ],
+  "selected_threshold": 0.22,
+  "runtime_threshold": 0.22,
+  "results": {
+    "keyword": {
+      "accuracy": 0.46296296296296297,
+      "macro_f1": 0.46501153167819836,
+      "mapped_team_accuracy": 0.7592592592592593,
+      "latency_ms_per_message_warm": 0.3773592591945392,
+      "per_class": {
+        "tracking": {
+          "precision": 0.75,
+          "recall": 0.5,
+          "f1-score": 0.6,
+          "support": 6.0
+        },
+        "return": {
+          "precision": 0.7142857142857143,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.7692307692307693,
+          "support": 6.0
+        },
+        "cancel": {
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.8,
+          "support": 6.0
+        },
+        "product": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 6.0
+        },
+        "policy": {
+          "precision": 1.0,
+          "recall": 0.16666666666666666,
+          "f1-score": 0.2857142857142857,
+          "support": 6.0
+        },
+        "damage": {
+          "precision": 0.6666666666666666,
+          "recall": 0.3333333333333333,
+          "f1-score": 0.4444444444444444,
+          "support": 6.0
+        },
+        "billing": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1-score": 0.6666666666666666,
+          "support": 6.0
+        },
+        "human": {
+          "precision": 1.0,
+          "recall": 0.16666666666666666,
+          "f1-score": 0.2857142857142857,
+          "support": 6.0
+        },
+        "unknown": {
+          "precision": 0.2,
+          "recall": 1.0,
+          "f1-score": 0.3333333333333333,
+          "support": 6.0
+        },
+        "accuracy": 0.46296296296296297,
+        "macro avg": {
+          "precision": 0.7034391534391535,
+          "recall": 0.4629629629629629,
+          "f1-score": 0.46501153167819836,
+          "support": 54.0
+        },
+        "weighted avg": {
+          "precision": 0.7034391534391534,
+          "recall": 0.46296296296296297,
+          "f1-score": 0.46501153167819836,
+          "support": 54.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          5,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6
+        ],
+        [
+          1,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "predictions": [
+        {
+          "id": "tracking_stalled_hub_1",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "My package has been sitting at the sorting facility all week",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "tracking_stalled_hub_2",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "The shipment has not moved beyond the regional depot",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_stalled_hub_3",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "Can you investigate why the carrier scan is stuck at a hub?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "tracking_dispatch_conflict_1",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "I got a dispatch email but the carrier cannot find the parcel",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_dispatch_conflict_2",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "Your site shows shipped while the courier says awaiting collection",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_dispatch_conflict_3",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "The store says on its way but tracking only shows a label created",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "return_quality_expectation_1",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "The fabric feels different than I expected so I wish to send it back",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_quality_expectation_2",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "There is nothing broken but this purchase is not for me; arrange a return",
+          "predicted": "damage",
+          "correct": false
+        },
+        {
+          "id": "return_quality_expectation_3",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "This item is fine but I regret buying it and would like an exchange",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_initiated_help_1",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "I am packing my return and need the next step",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_initiated_help_2",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "Could you help me complete the return paperwork?",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_initiated_help_3",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "I started sending this back but cannot find the return instructions",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "cancel_address_1",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "I used my old address; cancel the purchase so I can reorder",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_address_2",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "Please halt this order because I sent it to the wrong place",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "cancel_address_3",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "The delivery address is incorrect so I need to cancel",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_1",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "I cannot afford this purchase now; cancel it before dispatch",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_2",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "Stop the order because I need to reduce my spending",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_3",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "Please revoke my pending purchase; it exceeds my budget",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "product_comparison_1",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "What is the difference between the classic and oversized shirts?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "product_comparison_2",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "Which of these two jackets is warmer?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "product_comparison_3",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "Compare the canvas bag with the everyday tote",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "product_occasions_1",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "I need an outfit for a summer wedding; what do you suggest?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "product_occasions_2",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "Which clothes are suitable for a long flight?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "product_occasions_3",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "Find a lightweight layer for my hiking trip",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "policy_gift_rules_1",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "What are the rules for returning a gift without a receipt?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "policy_gift_rules_2",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "Does your return policy require the original packaging?",
+          "predicted": "return",
+          "correct": false
+        },
+        {
+          "id": "policy_gift_rules_3",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "Are the tags required under your exchange policy?",
+          "predicted": "return",
+          "correct": false
+        },
+        {
+          "id": "policy_regions_1",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Does your delivery policy include remote areas?",
+          "predicted": "tracking",
+          "correct": false
+        },
+        {
+          "id": "policy_regions_2",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Are there destinations excluded by your shipping rules?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "policy_regions_3",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Do standard shipping terms cover islands?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "damage_accessory_1",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "The bag arrived without its advertised shoulder strap",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "damage_accessory_2",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "The belt included with my delivered dress is missing",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_accessory_3",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "I received the jacket but its detachable hood was not in the box",
+          "predicted": "product",
+          "correct": false
+        },
+        {
+          "id": "damage_safety_1",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "A sharp piece is sticking out of the sole of my new shoes",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "damage_safety_2",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "There is a broken metal fastener on the delivered bag",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_safety_3",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "The buckle on the received belt is cracked",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "billing_discount_1",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "My coupon was accepted but the full amount was charged",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_discount_2",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "The discount is absent from the final invoice",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_discount_3",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "The promotional price did not appear on my receipt",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "billing_unknown_charge_1",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "I do not recognize this store charge on my statement",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "billing_unknown_charge_2",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "There is an unfamiliar payment to your shop on my card",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_unknown_charge_3",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "I never placed an order but your store billed me",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "human_accessibility_1",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "I struggle with this chatbot; could someone personally assist me?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "human_accessibility_2",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "I need an employee to help me work through this",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "human_accessibility_3",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "May I discuss this directly with a member of your staff?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "human_sensitive_case_1",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "I prefer to discuss the details with a representative privately",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "human_sensitive_case_2",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "Please assign this to a person who can review my situation",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_sensitive_case_3",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "Can someone from customer care handle this conversation?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "unknown_unrelated_advice_1",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "How should I invest my savings?",
+          "predicted": "unknown",
+          "correct": true
+        },
+        {
+          "id": "unknown_unrelated_advice_2",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "Can you solve my algebra homework?",
+          "predicted": "unknown",
+          "correct": true
+        },
+        {
+          "id": "unknown_unrelated_advice_3",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "What can I cook for dinner tonight?",
+          "predicted": "unknown",
+          "correct": true
+        },
+        {
+          "id": "unknown_ambiguous_reference_1",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "It happened again",
+          "predicted": "unknown",
+          "correct": true
+        },
+        {
+          "id": "unknown_ambiguous_reference_2",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "This is the thing I mentioned",
+          "predicted": "unknown",
+          "correct": true
+        },
+        {
+          "id": "unknown_ambiguous_reference_3",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "Could you do that for me?",
+          "predicted": "unknown",
+          "correct": true
+        }
+      ]
+    },
+    "classifier": {
+      "accuracy": 0.7222222222222222,
+      "macro_f1": 0.7002719502719503,
+      "mapped_team_accuracy": 0.8333333333333334,
+      "latency_ms_per_message_warm": 7.2268277778035825,
+      "per_class": {
+        "tracking": {
+          "precision": 0.5714285714285714,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.6153846153846154,
+          "support": 6.0
+        },
+        "return": {
+          "precision": 0.8333333333333334,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.8333333333333334,
+          "support": 6.0
+        },
+        "cancel": {
+          "precision": 0.8571428571428571,
+          "recall": 1.0,
+          "f1-score": 0.9230769230769231,
+          "support": 6.0
+        },
+        "product": {
+          "precision": 0.5,
+          "recall": 0.16666666666666666,
+          "f1-score": 0.25,
+          "support": 6.0
+        },
+        "policy": {
+          "precision": 0.5555555555555556,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.6666666666666666,
+          "support": 6.0
+        },
+        "damage": {
+          "precision": 0.8571428571428571,
+          "recall": 1.0,
+          "f1-score": 0.9230769230769231,
+          "support": 6.0
+        },
+        "billing": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.9090909090909091,
+          "support": 6.0
+        },
+        "human": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 6.0
+        },
+        "unknown": {
+          "precision": 0.2,
+          "recall": 0.16666666666666666,
+          "f1-score": 0.18181818181818182,
+          "support": 6.0
+        },
+        "accuracy": 0.7222222222222222,
+        "macro avg": {
+          "precision": 0.7082892416225749,
+          "recall": 0.7222222222222223,
+          "f1-score": 0.7002719502719503,
+          "support": 54.0
+        },
+        "weighted avg": {
+          "precision": 0.7082892416225749,
+          "recall": 0.7222222222222222,
+          "f1-score": 0.7002719502719503,
+          "support": 54.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          3,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "predictions": [
+        {
+          "id": "tracking_stalled_hub_1",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "My package has been sitting at the sorting facility all week",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_stalled_hub_2",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "The shipment has not moved beyond the regional depot",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_stalled_hub_3",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "Can you investigate why the carrier scan is stuck at a hub?",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_dispatch_conflict_1",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "I got a dispatch email but the carrier cannot find the parcel",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_dispatch_conflict_2",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "Your site shows shipped while the courier says awaiting collection",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "tracking_dispatch_conflict_3",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "The store says on its way but tracking only shows a label created",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "return_quality_expectation_1",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "The fabric feels different than I expected so I wish to send it back",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_quality_expectation_2",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "There is nothing broken but this purchase is not for me; arrange a return",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_quality_expectation_3",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "This item is fine but I regret buying it and would like an exchange",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_initiated_help_1",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "I am packing my return and need the next step",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_initiated_help_2",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "Could you help me complete the return paperwork?",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "return_initiated_help_3",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "I started sending this back but cannot find the return instructions",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "cancel_address_1",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "I used my old address; cancel the purchase so I can reorder",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_address_2",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "Please halt this order because I sent it to the wrong place",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_address_3",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "The delivery address is incorrect so I need to cancel",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_1",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "I cannot afford this purchase now; cancel it before dispatch",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_2",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "Stop the order because I need to reduce my spending",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_3",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "Please revoke my pending purchase; it exceeds my budget",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "product_comparison_1",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "What is the difference between the classic and oversized shirts?",
+          "predicted": "policy",
+          "correct": false
+        },
+        {
+          "id": "product_comparison_2",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "Which of these two jackets is warmer?",
+          "predicted": "product",
+          "correct": true
+        },
+        {
+          "id": "product_comparison_3",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "Compare the canvas bag with the everyday tote",
+          "predicted": "damage",
+          "correct": false
+        },
+        {
+          "id": "product_occasions_1",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "I need an outfit for a summer wedding; what do you suggest?",
+          "predicted": "policy",
+          "correct": false
+        },
+        {
+          "id": "product_occasions_2",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "Which clothes are suitable for a long flight?",
+          "predicted": "policy",
+          "correct": false
+        },
+        {
+          "id": "product_occasions_3",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "Find a lightweight layer for my hiking trip",
+          "predicted": "tracking",
+          "correct": false
+        },
+        {
+          "id": "policy_gift_rules_1",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "What are the rules for returning a gift without a receipt?",
+          "predicted": "return",
+          "correct": false
+        },
+        {
+          "id": "policy_gift_rules_2",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "Does your return policy require the original packaging?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "policy_gift_rules_3",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "Are the tags required under your exchange policy?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "policy_regions_1",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Does your delivery policy include remote areas?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "policy_regions_2",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Are there destinations excluded by your shipping rules?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "policy_regions_3",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Do standard shipping terms cover islands?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "damage_accessory_1",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "The bag arrived without its advertised shoulder strap",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_accessory_2",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "The belt included with my delivered dress is missing",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_accessory_3",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "I received the jacket but its detachable hood was not in the box",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_safety_1",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "A sharp piece is sticking out of the sole of my new shoes",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_safety_2",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "There is a broken metal fastener on the delivered bag",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_safety_3",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "The buckle on the received belt is cracked",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "billing_discount_1",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "My coupon was accepted but the full amount was charged",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_discount_2",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "The discount is absent from the final invoice",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_discount_3",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "The promotional price did not appear on my receipt",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_unknown_charge_1",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "I do not recognize this store charge on my statement",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_unknown_charge_2",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "There is an unfamiliar payment to your shop on my card",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_unknown_charge_3",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "I never placed an order but your store billed me",
+          "predicted": "unknown",
+          "correct": false
+        },
+        {
+          "id": "human_accessibility_1",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "I struggle with this chatbot; could someone personally assist me?",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_accessibility_2",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "I need an employee to help me work through this",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_accessibility_3",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "May I discuss this directly with a member of your staff?",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_sensitive_case_1",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "I prefer to discuss the details with a representative privately",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_sensitive_case_2",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "Please assign this to a person who can review my situation",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_sensitive_case_3",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "Can someone from customer care handle this conversation?",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "unknown_unrelated_advice_1",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "How should I invest my savings?",
+          "predicted": "tracking",
+          "correct": false
+        },
+        {
+          "id": "unknown_unrelated_advice_2",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "Can you solve my algebra homework?",
+          "predicted": "tracking",
+          "correct": false
+        },
+        {
+          "id": "unknown_unrelated_advice_3",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "What can I cook for dinner tonight?",
+          "predicted": "policy",
+          "correct": false
+        },
+        {
+          "id": "unknown_ambiguous_reference_1",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "It happened again",
+          "predicted": "cancel",
+          "correct": false
+        },
+        {
+          "id": "unknown_ambiguous_reference_2",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "This is the thing I mentioned",
+          "predicted": "product",
+          "correct": false
+        },
+        {
+          "id": "unknown_ambiguous_reference_3",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "Could you do that for me?",
+          "predicted": "unknown",
+          "correct": true
+        }
+      ]
+    },
+    "hybrid": {
+      "accuracy": 0.8148148148148148,
+      "macro_f1": 0.7864801864801865,
+      "mapped_team_accuracy": 0.9259259259259259,
+      "latency_ms_per_message_warm": 10.13997962959197,
+      "per_class": {
+        "tracking": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1-score": 0.8,
+          "support": 6.0
+        },
+        "return": {
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.9090909090909091,
+          "support": 6.0
+        },
+        "cancel": {
+          "precision": 0.8571428571428571,
+          "recall": 1.0,
+          "f1-score": 0.9230769230769231,
+          "support": 6.0
+        },
+        "product": {
+          "precision": 0.75,
+          "recall": 0.5,
+          "f1-score": 0.6,
+          "support": 6.0
+        },
+        "policy": {
+          "precision": 0.625,
+          "recall": 0.8333333333333334,
+          "f1-score": 0.7142857142857143,
+          "support": 6.0
+        },
+        "damage": {
+          "precision": 0.8571428571428571,
+          "recall": 1.0,
+          "f1-score": 0.9230769230769231,
+          "support": 6.0
+        },
+        "billing": {
+          "precision": 0.8571428571428571,
+          "recall": 1.0,
+          "f1-score": 0.9230769230769231,
+          "support": 6.0
+        },
+        "human": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 6.0
+        },
+        "unknown": {
+          "precision": 1.0,
+          "recall": 0.16666666666666666,
+          "f1-score": 0.2857142857142857,
+          "support": 6.0
+        },
+        "accuracy": 0.8148148148148148,
+        "macro avg": {
+          "precision": 0.8458994708994709,
+          "recall": 0.8148148148148149,
+          "f1-score": 0.7864801864801865,
+          "support": 54.0
+        },
+        "weighted avg": {
+          "precision": 0.8458994708994709,
+          "recall": 0.8148148148148148,
+          "f1-score": 0.7864801864801865,
+          "support": 54.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          5,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          3,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "predictions": [
+        {
+          "id": "tracking_stalled_hub_1",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "My package has been sitting at the sorting facility all week",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_stalled_hub_2",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "The shipment has not moved beyond the regional depot",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_stalled_hub_3",
+          "group": "tracking_stalled_hub",
+          "intent": "tracking",
+          "text": "Can you investigate why the carrier scan is stuck at a hub?",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_dispatch_conflict_1",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "I got a dispatch email but the carrier cannot find the parcel",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_dispatch_conflict_2",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "Your site shows shipped while the courier says awaiting collection",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "tracking_dispatch_conflict_3",
+          "group": "tracking_dispatch_conflict",
+          "intent": "tracking",
+          "text": "The store says on its way but tracking only shows a label created",
+          "predicted": "tracking",
+          "correct": true
+        },
+        {
+          "id": "return_quality_expectation_1",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "The fabric feels different than I expected so I wish to send it back",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_quality_expectation_2",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "There is nothing broken but this purchase is not for me; arrange a return",
+          "predicted": "damage",
+          "correct": false
+        },
+        {
+          "id": "return_quality_expectation_3",
+          "group": "return_quality_expectation",
+          "intent": "return",
+          "text": "This item is fine but I regret buying it and would like an exchange",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_initiated_help_1",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "I am packing my return and need the next step",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_initiated_help_2",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "Could you help me complete the return paperwork?",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "return_initiated_help_3",
+          "group": "return_initiated_help",
+          "intent": "return",
+          "text": "I started sending this back but cannot find the return instructions",
+          "predicted": "return",
+          "correct": true
+        },
+        {
+          "id": "cancel_address_1",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "I used my old address; cancel the purchase so I can reorder",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_address_2",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "Please halt this order because I sent it to the wrong place",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_address_3",
+          "group": "cancel_address",
+          "intent": "cancel",
+          "text": "The delivery address is incorrect so I need to cancel",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_1",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "I cannot afford this purchase now; cancel it before dispatch",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_2",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "Stop the order because I need to reduce my spending",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "cancel_budget_3",
+          "group": "cancel_budget",
+          "intent": "cancel",
+          "text": "Please revoke my pending purchase; it exceeds my budget",
+          "predicted": "cancel",
+          "correct": true
+        },
+        {
+          "id": "product_comparison_1",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "What is the difference between the classic and oversized shirts?",
+          "predicted": "policy",
+          "correct": false
+        },
+        {
+          "id": "product_comparison_2",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "Which of these two jackets is warmer?",
+          "predicted": "product",
+          "correct": true
+        },
+        {
+          "id": "product_comparison_3",
+          "group": "product_comparison",
+          "intent": "product",
+          "text": "Compare the canvas bag with the everyday tote",
+          "predicted": "product",
+          "correct": true
+        },
+        {
+          "id": "product_occasions_1",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "I need an outfit for a summer wedding; what do you suggest?",
+          "predicted": "product",
+          "correct": true
+        },
+        {
+          "id": "product_occasions_2",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "Which clothes are suitable for a long flight?",
+          "predicted": "policy",
+          "correct": false
+        },
+        {
+          "id": "product_occasions_3",
+          "group": "product_occasions",
+          "intent": "product",
+          "text": "Find a lightweight layer for my hiking trip",
+          "predicted": "tracking",
+          "correct": false
+        },
+        {
+          "id": "policy_gift_rules_1",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "What are the rules for returning a gift without a receipt?",
+          "predicted": "billing",
+          "correct": false
+        },
+        {
+          "id": "policy_gift_rules_2",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "Does your return policy require the original packaging?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "policy_gift_rules_3",
+          "group": "policy_gift_rules",
+          "intent": "policy",
+          "text": "Are the tags required under your exchange policy?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "policy_regions_1",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Does your delivery policy include remote areas?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "policy_regions_2",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Are there destinations excluded by your shipping rules?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "policy_regions_3",
+          "group": "policy_regions",
+          "intent": "policy",
+          "text": "Do standard shipping terms cover islands?",
+          "predicted": "policy",
+          "correct": true
+        },
+        {
+          "id": "damage_accessory_1",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "The bag arrived without its advertised shoulder strap",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_accessory_2",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "The belt included with my delivered dress is missing",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_accessory_3",
+          "group": "damage_accessory",
+          "intent": "damage",
+          "text": "I received the jacket but its detachable hood was not in the box",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_safety_1",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "A sharp piece is sticking out of the sole of my new shoes",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_safety_2",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "There is a broken metal fastener on the delivered bag",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "damage_safety_3",
+          "group": "damage_safety",
+          "intent": "damage",
+          "text": "The buckle on the received belt is cracked",
+          "predicted": "damage",
+          "correct": true
+        },
+        {
+          "id": "billing_discount_1",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "My coupon was accepted but the full amount was charged",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_discount_2",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "The discount is absent from the final invoice",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_discount_3",
+          "group": "billing_discount",
+          "intent": "billing",
+          "text": "The promotional price did not appear on my receipt",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_unknown_charge_1",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "I do not recognize this store charge on my statement",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_unknown_charge_2",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "There is an unfamiliar payment to your shop on my card",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "billing_unknown_charge_3",
+          "group": "billing_unknown_charge",
+          "intent": "billing",
+          "text": "I never placed an order but your store billed me",
+          "predicted": "billing",
+          "correct": true
+        },
+        {
+          "id": "human_accessibility_1",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "I struggle with this chatbot; could someone personally assist me?",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_accessibility_2",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "I need an employee to help me work through this",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_accessibility_3",
+          "group": "human_accessibility",
+          "intent": "human",
+          "text": "May I discuss this directly with a member of your staff?",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_sensitive_case_1",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "I prefer to discuss the details with a representative privately",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_sensitive_case_2",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "Please assign this to a person who can review my situation",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "human_sensitive_case_3",
+          "group": "human_sensitive_case",
+          "intent": "human",
+          "text": "Can someone from customer care handle this conversation?",
+          "predicted": "human",
+          "correct": true
+        },
+        {
+          "id": "unknown_unrelated_advice_1",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "How should I invest my savings?",
+          "predicted": "tracking",
+          "correct": false
+        },
+        {
+          "id": "unknown_unrelated_advice_2",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "Can you solve my algebra homework?",
+          "predicted": "tracking",
+          "correct": false
+        },
+        {
+          "id": "unknown_unrelated_advice_3",
+          "group": "unknown_unrelated_advice",
+          "intent": "unknown",
+          "text": "What can I cook for dinner tonight?",
+          "predicted": "policy",
+          "correct": false
+        },
+        {
+          "id": "unknown_ambiguous_reference_1",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "It happened again",
+          "predicted": "cancel",
+          "correct": false
+        },
+        {
+          "id": "unknown_ambiguous_reference_2",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "This is the thing I mentioned",
+          "predicted": "product",
+          "correct": false
+        },
+        {
+          "id": "unknown_ambiguous_reference_3",
+          "group": "unknown_ambiguous_reference",
+          "intent": "unknown",
+          "text": "Could you do that for me?",
+          "predicted": "unknown",
+          "correct": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "234 synthetic single-turn messages: 144 training, 36 validation, 54 held-out test; six test messages per class.",
+    "AI-assisted messages and labels; scenario groups are disjoint, but vocabulary and author style overlap; no independent annotator or real traffic.",
+    "Rules and labels were authored by the same implementation team; hybrid results may be optimistic.",
+    "Mapped team accuracy uses a static intent-to-team mapping, not contextual full-workflow routing correctness.",
+    "No confidence intervals or production latency claims; local warm inference measured on this workstation.",
+    "Live generative answer quality is not measured without an API key and an independently reviewed answer set."
+  ]
+}

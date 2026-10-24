@@ -1,0 +1,47 @@
+%% Planned component architecture, v0.1.0, 2026-10-24.
+flowchart TB
+    subgraph browser[Browser]
+        customerui[React customer store and chat]
+        staffui[React support and admin dashboard]
+    end
+
+    subgraph backend[FastAPI modular monolith]
+        api[API and Pydantic validation]
+        auth[Sessions, roles, and ownership checks]
+        commerce[Catalog and seeded order workflows]
+        orchestrator[Support workflow orchestrator]
+        classifier[Local scikit-learn intent classifier]
+        router[Python routing and escalation rules]
+        knowledge[Approved knowledge retrieval and ingestion]
+        embeddings[Local sentence-transformer embeddings]
+        actions[Policy checks, confirmation, and idempotent actions]
+        tickets[Ticket queues and human ownership]
+        adapter[HTTPX adapter: free-route and license eligibility guard]
+        persistence[SQLAlchemy transactions and audit recording]
+    end
+
+    database[(PostgreSQL with pgvector)]
+    external[OpenRouter: explicitly allowlisted free model]
+
+    customerui --> api
+    staffui --> api
+    api --> auth
+    auth --> commerce
+    auth --> orchestrator
+    auth --> tickets
+    auth --> knowledge
+    orchestrator --> classifier
+    orchestrator --> router
+    orchestrator --> knowledge
+    knowledge --> embeddings
+    orchestrator --> actions
+    router --> tickets
+    orchestrator --> adapter
+    adapter -->|Redacted context and bounded requests| external
+    commerce --> persistence
+    auth --> persistence
+    knowledge --> persistence
+    actions --> persistence
+    tickets --> persistence
+    orchestrator --> persistence
+    persistence --> database

@@ -1,0 +1,35 @@
+%% Planned ticket lifecycle, v0.1.0, 2026-10-24.
+stateDiagram-v2
+    [*] --> NewTicket: Handoff or support request recorded
+    NewTicket --> Triaged: Intent and reason reviewed
+    Triaged --> Queued: Rules select team or general queue
+    Queued --> Assigned: Authorized available staff accepts
+    Assigned --> InProgress: Staff begins response
+    Assigned --> Queued: Assignment released
+    InProgress --> WaitingCustomer: Information requested
+    WaitingCustomer --> InProgress: Customer replies
+    InProgress --> Queued: Transfer with recorded reason
+    InProgress --> Resolved: Outcome recorded
+    WaitingCustomer --> Resolved: Policy-based closure with recorded reason
+    Resolved --> Queued: Customer reopens within configured policy
+    Resolved --> Closed: Confirmed resolution or configured closure
+    Closed --> [*]
+
+    note right of Queued
+        Conversation is handoff_pending.
+        No assistant generation or bot reply while queued.
+        Show transport acknowledgment and actual queue status.
+        Do not invent a response-time promise.
+    end note
+
+    note right of Assigned
+        Set conversation to human_owned atomically.
+        Pause assistant replies.
+        Retain assignment history.
+    end note
+
+    note right of Resolved
+        Ticket status and conversation ownership are separate.
+        Staff explicitly returns assistant ownership
+        or closes the conversation.
+    end note
