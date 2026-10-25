@@ -1,0 +1,284 @@
+{
+  "observed_on": "2026-10-25",
+  "target": "CPython 3.13 Linux aarch64",
+  "validation": "successful pip dry-run with only-binary; no ARM runtime executed",
+  "package_count": 46,
+  "packages": [
+    {
+      "name": "alembic",
+      "version": "1.20.1",
+      "wheel": "alembic-1.20.1-py3-none-any.whl",
+      "sha256": "9970712cfb81ea26c8658d378aaa5b8f6ff9146e5bb111d70497c164016cf598"
+    },
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "wheel": "annotated_doc-0.0.5-py3-none-any.whl",
+      "sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "wheel": "annotated_types-0.8.0-py3-none-any.whl",
+      "sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "wheel": "anyio-4.15.1-py3-none-any.whl",
+      "sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101"
+    },
+    {
+      "name": "argon2-cffi",
+      "version": "25.1.0",
+      "wheel": "argon2_cffi-25.1.0-py3-none-any.whl",
+      "sha256": "fdc8b074db390fccb6eb4a3604ae7231f219aa669a2652e0f20e16ba513d5741"
+    },
+    {
+      "name": "argon2-cffi-bindings",
+      "version": "26.1.0",
+      "wheel": "argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl",
+      "sha256": "78de2d65e0b9ea7ce9d1b1c3e87297b2d7305a02c266ee2a2d6910daddd7ee69"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "wheel": "certifi-2026.10.23-py3-none-any.whl",
+      "sha256": "e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "wheel": "cffi-2.1.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+      "sha256": "f16c709686a78c727bbbf059f92b0bf41c6fc60deec706d2dc19f529175a6125"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "wheel": "click-8.5.0-py3-none-any.whl",
+      "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360"
+    },
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2",
+      "wheel": "cloudpickle-3.1.2-py3-none-any.whl",
+      "sha256": "9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "wheel": "colorama-0.4.6-py2.py3-none-any.whl",
+      "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.162.0",
+      "wheel": "fastapi-0.162.0-py3-none-any.whl",
+      "sha256": "3785963de305dd09912426cb81f2d230fce98ab3521cdfe97265c8d14983128c"
+    },
+    {
+      "name": "greenlet",
+      "version": "3.5.6",
+      "wheel": "greenlet-3.5.6-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+      "sha256": "c75116c9de79949de23006e2d9b35ee82874c594fcf5c0311b439acaa14b8441"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "wheel": "h11-0.16.0-py3-none-any.whl",
+      "sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "wheel": "httpcore-1.0.9-py3-none-any.whl",
+      "sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "wheel": "httpx-0.28.1-py3-none-any.whl",
+      "sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "wheel": "idna-3.20-py3-none-any.whl",
+      "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1",
+      "wheel": "iniconfig-2.3.1-py3-none-any.whl",
+      "sha256": "9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7"
+    },
+    {
+      "name": "joblib",
+      "version": "1.6.0",
+      "wheel": "joblib-1.6.0-py3-none-any.whl",
+      "sha256": "3dbbf9f6e4b592a2357b854608e980fe6390d131d7a82f011a377ef2ebef7aba"
+    },
+    {
+      "name": "Mako",
+      "version": "1.4.3",
+      "wheel": "mako-1.4.3-py3-none-any.whl",
+      "sha256": "723296007c870bfd6b3f0c3230dba7198096e5269297ebf5e4eff9e7ffa39d4f"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.4",
+      "wheel": "markupsafe-3.0.4-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl",
+      "sha256": "7018d4af1cd272e847aa5917983ab5e83e4f6579f9dbfecd4a79c0ca80b144c2"
+    },
+    {
+      "name": "narwhals",
+      "version": "2.27.1",
+      "wheel": "narwhals-2.27.1-py3-none-any.whl",
+      "sha256": "d057df13f5852b8e157596e82eb5e955fad267425df5e420e0ee9863da483b31"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.4",
+      "wheel": "numpy-2.5.4-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+      "sha256": "1c2e71b04c6cad90026e544501bbe0ab9290fa8a4d845e7e8c0d124fb429c988"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.1",
+      "wheel": "opentelemetry_api-1.45.1-py3-none-any.whl",
+      "sha256": "b31553efa588ae44bc306f863c785c5333a9ecc091248c6ee68b4b6c87fdedfb"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "wheel": "packaging-26.3-py3-none-any.whl",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+    },
+    {
+      "name": "pgvector",
+      "version": "0.5.1",
+      "wheel": "pgvector-0.5.1-py3-none-any.whl",
+      "sha256": "ec5bcd5ffaefe6ecb2dcc9564ca921d284564b969183bc837a144604773af8ea"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0",
+      "wheel": "pluggy-1.7.0-py3-none-any.whl",
+      "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec"
+    },
+    {
+      "name": "psycopg",
+      "version": "3.3.6",
+      "wheel": "psycopg-3.3.6-py3-none-any.whl",
+      "sha256": "a1db9f7148b06a28606767efaca51fa6f9398c5c0a3810519be69d7000bdb631"
+    },
+    {
+      "name": "psycopg-binary",
+      "version": "3.3.6",
+      "wheel": "psycopg_binary-3.3.6-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+      "sha256": "98c02090d88f2ebc0ec1e8da538f77d225ce0fffecf372aa39262e62a1b054ef"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "wheel": "pycparser-3.12-py3-none-any.whl",
+      "sha256": "a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.1",
+      "wheel": "pydantic-2.14.1-py3-none-any.whl",
+      "sha256": "9195d967ec791692a04438115466764fb8b9a27b31f14a760437694f40d6b454"
+    },
+    {
+      "name": "pydantic-settings",
+      "version": "2.16.1",
+      "wheel": "pydantic_settings-2.16.1-py3-none-any.whl",
+      "sha256": "30f5313340da4e8f1b440d1910b92a5bc3ccbb6b4ba70ec2b8395bc921f418f5"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.1",
+      "wheel": "pydantic_core-2.50.1-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+      "sha256": "409e0ea40ec30d9158f33574fd758e689f6045a0f2596701828c27816ca9687d"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "wheel": "pygments-2.21.0-py3-none-any.whl",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1",
+      "wheel": "pytest-9.1.1-py3-none-any.whl",
+      "sha256": "37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c"
+    },
+    {
+      "name": "pytest-asyncio",
+      "version": "1.4.0",
+      "wheel": "pytest_asyncio-1.4.0-py3-none-any.whl",
+      "sha256": "933ca923a23075a87fb7070c0ec272a6848489824d887c85c812670932835aa1"
+    },
+    {
+      "name": "python-dotenv",
+      "version": "1.2.4",
+      "wheel": "python_dotenv-1.2.4-py3-none-any.whl",
+      "sha256": "42269a8a5b3fd54ffa6f3d84b18abed50064717576b4ecf03dc4a55d8aa04fdc"
+    },
+    {
+      "name": "scikit-learn",
+      "version": "1.9.1",
+      "wheel": "scikit_learn-1.9.1-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+      "sha256": "5990f9c69e431bfaddcde1a6d7c5355243e026bc9b9e560c13893b90dab53fb4"
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.1",
+      "wheel": "scipy-1.18.1-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+      "sha256": "d416b16cccfd70fbf62400e84d0bb2f4e6af519a45557f1692c749b37f14b315"
+    },
+    {
+      "name": "SQLAlchemy",
+      "version": "2.0.55",
+      "wheel": "sqlalchemy-2.0.55-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl",
+      "sha256": "051a9a6226b65292140ef1f02f451081e64d53db993ac126b4652b250e46e2e7"
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0",
+      "wheel": "starlette-1.10.0-py3-none-any.whl",
+      "sha256": "478c0ab3b4ced6e82719849c118fa406f0278a3499c1a898cd15cd31bdc38ce4"
+    },
+    {
+      "name": "threadpoolctl",
+      "version": "3.7.0",
+      "wheel": "threadpoolctl-3.7.0-py3-none-any.whl",
+      "sha256": "cd8b60b5641b45c67bbf73c64c843235fc2d8a480c87389f52f5dbee893b86be"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "wheel": "typing_inspection-0.4.4-py3-none-any.whl",
+      "sha256": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "wheel": "typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026.5",
+      "wheel": "tzdata-2026.5-py2.py3-none-any.whl",
+      "sha256": "b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0",
+      "wheel": "uvicorn-0.54.0-py3-none-any.whl",
+      "sha256": "505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf"
+    }
+  ]
+}

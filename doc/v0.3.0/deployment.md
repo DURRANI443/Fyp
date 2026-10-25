@@ -1,6 +1,6 @@
 # Supabase, Vercel, and Oracle deployment
 
-Version: v0.3.0. Prepared: 2026-10-24. Scope: a private, small FYP demonstration with simulated commerce. **Configuration and local checks are implemented; live cloud deployment has not been performed.** Provider accounts, a backend hostname, and credentials must be supplied by the project owner.
+Version: v0.3.0. Prepared: 2026-10-24; reviewed and completed 2026-10-25. Scope: a small FYP demonstration with simulated commerce. **Configuration and local checks are implemented; live cloud deployment has not been performed.** The owner confirmed that the provider resources have not been created yet. Provider accounts, a backend hostname, and credentials must be supplied during setup.
 
 ## Architecture and free-tier boundary
 
@@ -70,7 +70,7 @@ sudo -Hu northstar env UV_PYTHON_INSTALL_DIR=/opt/northstar/.python /opt/northst
 sudo -Hu northstar /opt/northstar/.uv/bin/uv pip install --python /opt/northstar/.venv/bin/python -r /opt/northstar/backend/requirements.txt
 ```
 
-Skip `useradd`/`git clone` if you are updating an existing installation. Do not replace the system Python. `uv` manages the separate Python 3.13 runtime inside the application directory. The app's dependencies are pinned; record `uv --version` and the installed Python patch version in your deployment notes. [uv Python management](https://docs.astral.sh/uv/guides/install-python/).
+Skip `useradd`/`git clone` if you are updating an existing installation. Do not replace the system Python. `uv` manages the separate Python 3.13 runtime inside the application directory. The app's dependencies are pinned; record `uv --version` and the installed Python patch version in your deployment notes. All 46 core package pins resolved to compatible Python 3.13/Linux ARM wheels in the local cross-platform dry-run. That checks package availability, not execution on a real Oracle VM. [uv Python management](https://docs.astral.sh/uv/guides/install-python/).
 
 If the VM image has an active OS firewall, permit TCP 80/443 there too without deleting existing rules. If you use UFW, first allow SSH from your IP, then HTTP/HTTPS, and verify access in a second SSH session before enabling it. Oracle network rules and the VM firewall are separate layers.
 
@@ -96,7 +96,7 @@ LLM_MODE=offline
 
 There is no slash at the end of an origin. Hosts contain no protocol, port, or path. If you later add a custom frontend domain, append its exact HTTPS origin as a comma-separated value. Do not allow `*.vercel.app` or arbitrary preview deployments. A preview that must access this database needs an explicitly reviewed origin, or preferably its own database/backend.
 
-Copy the Supabase CA certificate you downloaded into the `certs` directory and make it readable by `northstar`. Then run migrations, seed reference products/policies, and create your accounts:
+Copy the Supabase CA certificate you downloaded into the `certs` directory and make it readable by `northstar`. For example, from your own computer use `scp -i /path/to/private-key /path/to/supabase-ca.crt ubuntu@YOUR_ORACLE_IP:~/supabase-ca.crt`. Then, in the VM SSH session, run `sudo install -o northstar -g northstar -m 644 ~/supabase-ca.crt /opt/northstar/certs/supabase-ca.crt`. Run migrations, seed reference products/policies, and create your accounts:
 
 ```bash
 cd /opt/northstar/backend

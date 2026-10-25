@@ -13,7 +13,7 @@ test('customer can ask a grounded question and hand off to a staff member', asyn
   page.on('pageerror', error => errors.push(error.message));
   await login(page);
   await expect(page.getByRole('heading', { name: 'The essentials' })).toBeVisible();
-  await expect(page.locator('.product-card')).toHaveCount(6);
+  await expect(page.locator('.product-card')).toHaveCount(10);
   await page.screenshot({ path: testInfo.outputPath('customer-desktop.png'), fullPage: true });
   await page.getByRole('button', { name: 'Get support', exact: true }).click();
   await page.getByRole('textbox', { name: 'Message', exact: true }).fill('What is your return policy?');

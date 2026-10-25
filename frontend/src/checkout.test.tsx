@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { useState } from 'react';
 import { ApiError, api, post } from './api';
 import { Login } from './App';
-import { Cart, Shop } from './store';
+import { Cart, Shop, useCart } from './store';
 import type { CartLine, CheckoutQuote, CheckoutResult, Product, System } from './types';
 
 vi.mock('./api', async importOriginal => ({ ...await importOriginal<typeof import('./api')>(), api: vi.fn(), post: vi.fn() }));
@@ -12,11 +12,39 @@ const initial: CartLine[] = [{ product, quantity: 1, size: 'M' }];
 const quote: CheckoutQuote = { items: [{ product_id: product.id, name: product.name, quantity: 1, size: 'M', price_cents: 2400, line_total_cents: 2400, stock: 5 }], subtotal_cents: 2400, shipping_cents: 0, tax_cents: 0, total_cents: 2400, currency: 'USD', quote_token: 'quote-1', simulated: true };
 const approved: CheckoutResult = { status: 'approved', simulated: true, payment: { reference: 'SIM-TEST', status: 'approved', amount_cents: 2400, currency: 'USD', simulated: true }, order: { id: 'order', number: 'NS-NEW', customer_id: 'customer', status: 'processing', shipping_status: 'Preparing', tracking_number: null, created_at: '2026-10-24', delivered_at: null, total_cents: 2400, currency: 'USD', version: 1, items: [], returns: [], timeline: [], can_cancel: true, can_return: false }, message: 'Practice order created.' };
 const declined: CheckoutResult = { ...approved, status: 'declined', order: null, payment: { ...approved.payment, status: 'declined' }, message: 'No order was created.' };
-function CartHarness() { const [lines, setLines] = useState(initial); return <Cart lines={lines} setLines={setLines} userId="customer" shop={vi.fn()} orders={vi.fn()} />; }
-beforeEach(() => { vi.mocked(api).mockReset(); vi.mocked(post).mockReset(); sessionStorage.clear(); });
+function CartHarness() { const cart = useCart('customer'); return <Cart {...cart} userId="customer" shop={vi.fn()} orders={vi.fn()} />; }
+beforeEach(() => { vi.mocked(api).mockReset(); vi.mocked(post).mockReset(); sessionStorage.clear(); sessionStorage.setItem('northstar.cart.customer', JSON.stringify(initial)); });
 afterEach(cleanup);
 
 describe('simulated checkout', () => {
+  it('preserves later additions and settles duplicate background responses only once', async () => {
+    const responses: ((value: CheckoutResult) => void)[] = [];
+    vi.mocked(post).mockImplementation(async path => path === '/checkout/quote' ? quote : new Promise<CheckoutResult>(resolve => responses.push(resolve)));
+    function NavigatingCart() {
+      const cart = useCart('customer');
+      const [visible, setVisible] = useState(true);
+      return <><output aria-label="Cart units">{cart.lines.reduce((sum, line) => sum + line.quantity, 0)}</output>
+        <button onClick={() => setVisible(value => !value)}>Toggle cart</button>
+        <button onClick={() => cart.setLines(lines => [...lines.map(line => ({ ...line, quantity: line.quantity + 1 })), { product: { ...product, id: 'bag' }, size: 'S', quantity: 1 }])}>Add later items</button>
+        {visible && <Cart {...cart} userId="customer" shop={vi.fn()} orders={vi.fn()} />}</>;
+    }
+    render(<NavigatingCart />);
+    fireEvent.click(screen.getByRole('button', { name: 'Review order' }));
+    fireEvent.click(await screen.findByRole('button', { name: /Confirm & simulate/ }));
+    await waitFor(() => expect(responses).toHaveLength(1));
+    fireEvent.click(screen.getByRole('button', { name: 'Toggle cart' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Add later items' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Toggle cart' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Retry same payment' }));
+    await waitFor(() => expect(responses).toHaveLength(2));
+    responses[0](approved);
+    await waitFor(() => expect(screen.getByLabelText('Cart units').textContent).toBe('2'));
+    responses[1](approved);
+    await screen.findByText('Your demo order is in.');
+    expect(screen.getByLabelText('Cart units').textContent).toBe('2');
+    expect(JSON.parse(sessionStorage.getItem('northstar.cart.customer')!).lines.map((line: CartLine) => [line.product.id, line.quantity])).toEqual([['tee', 1], ['bag', 1]]);
+  });
+
   it('requires server review before explicit confirmation and shows a receipt', async () => {
     vi.mocked(post).mockImplementation(async path => path === '/checkout/quote' ? quote : approved);
     render(<CartHarness />);

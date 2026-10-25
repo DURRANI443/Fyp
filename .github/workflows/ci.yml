@@ -51,3 +51,44 @@ jobs:
         run: npm run test:e2e
       - name: Documentation integrity
         run: .venv/bin/python scripts/check_docs.py
+
+  postgresql:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: northstar_ci
+          POSTGRES_PASSWORD: ci-ephemeral-only
+          POSTGRES_DB: northstar_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U northstar_ci -d northstar_ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      APP_ENV: test
+      DATABASE_URL: postgresql+psycopg://northstar_ci:ci-ephemeral-only@127.0.0.1:5432/northstar_ci
+      TEST_POSTGRES_URL: postgresql+psycopg://northstar_ci:ci-ephemeral-only@127.0.0.1:5432/northstar_ci
+      EMBEDDING_MODE: tfidf
+      LLM_MODE: offline
+      OPENROUTER_API_KEY: ''
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r backend/requirements.txt
+      - name: Migrate PostgreSQL and verify schema
+        working-directory: backend
+        run: |
+          python -m app.bootstrap
+          python -m alembic check
+      - name: PostgreSQL backend tests
+        working-directory: backend
+        run: python -m pytest tests -q

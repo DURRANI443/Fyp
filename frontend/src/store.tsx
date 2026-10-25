@@ -1,18 +1,39 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { ApiError, errorText, post } from './api';
 import type { CartLine, CheckoutQuote, CheckoutRequest, CheckoutResult, Product } from './types';
 import { Badge, Empty, ErrorBox, Icon, label, Loading, money, PageHeading, ProductArt, useResource } from './ui';
 
 export function useCart(userId: string) {
   const storageKey = `northstar.cart.${userId}`;
-  const [lines, setLines] = useState<CartLine[]>(() => {
+  const [state, setState] = useState<{ lines: CartLine[]; completed: string[] }>(() => {
     try {
-      const saved: unknown = JSON.parse(sessionStorage.getItem(storageKey) ?? '[]');
-      return Array.isArray(saved) ? saved.filter((line): line is CartLine => typeof line?.product?.id === 'string' && Number.isInteger(line.quantity) && line.quantity > 0 && line.quantity <= 10 && typeof line.size === 'string').slice(0, 20) : [];
-    } catch { return []; }
+      const saved = JSON.parse(sessionStorage.getItem(storageKey) ?? '[]');
+      const lines = Array.isArray(saved) ? saved : saved?.lines;
+      return {
+        lines: Array.isArray(lines) ? lines.filter((line): line is CartLine => typeof line?.product?.id === 'string' && Number.isInteger(line.quantity) && line.quantity > 0 && line.quantity <= 10 && typeof line.size === 'string').slice(0, 20) : [],
+        completed: Array.isArray(saved?.completed) ? saved.completed.filter((key: unknown) => typeof key === 'string').slice(-100) : [],
+      };
+    } catch { return { lines: [], completed: [] }; }
   });
-  useEffect(() => { try { sessionStorage.setItem(storageKey, JSON.stringify(lines)); } catch { /* The cart still works in memory. */ } }, [lines, storageKey]);
-  return { lines, setLines };
+  useEffect(() => { try { sessionStorage.setItem(storageKey, JSON.stringify(state)); } catch { /* The cart still works in memory. */ } }, [state, storageKey]);
+  const setLines: Dispatch<SetStateAction<CartLine[]>> = useCallback(update => {
+    setState(previous => ({ ...previous, lines: typeof update === 'function' ? update(previous.lines) : update }));
+  }, []);
+  const completeCheckout = useCallback((request: CheckoutRequest) => {
+    setState(previous => {
+      if (previous.completed.includes(request.idempotency_key)) return previous;
+      // Keep items added after this payment started, including extra units of the
+      // same variant. Duplicate responses from an original request and its retry
+      // settle the cart only once, just as the backend settles the order once.
+      const lines = previous.lines.flatMap(line => {
+        const purchased = request.items.find(item => item.product_id === line.product.id && item.size === line.size)?.quantity ?? 0;
+        return line.quantity > purchased ? [{ ...line, quantity: line.quantity - purchased }] : [];
+      });
+      return { lines, completed: [...previous.completed, request.idempotency_key].slice(-100) };
+    });
+  }, []);
+  return { lines: state.lines, setLines, completeCheckout };
 }
 
 function ProductCard({ product, lines, add, ask }: { product: Product; lines: CartLine[]; add: (product: Product, size: string) => void; ask: (message: string) => void }) {
@@ -57,7 +78,7 @@ export function Shop({ ask, lines, setLines, openCart }: { ask: (message?: strin
 
 const demoShipping = { name: 'Demo Customer', address: '123 Demo Street', city: 'Demo City', postal_code: '00000', country: 'Demo Country' };
 
-export function Cart({ lines, setLines, userId, shop, orders }: { lines: CartLine[]; setLines: (lines: CartLine[]) => void; userId: string; shop: () => void; orders: () => void }) {
+export function Cart({ lines, setLines, completeCheckout, userId, shop, orders }: { lines: CartLine[]; setLines: (lines: CartLine[]) => void; completeCheckout: (request: CheckoutRequest) => void; userId: string; shop: () => void; orders: () => void }) {
   const pendingKey = `northstar.checkout.${userId}`;
   const [quote, setQuote] = useState<CheckoutQuote | null>(null);
   const [scenario, setScenario] = useState<'approved' | 'declined'>('approved');
@@ -90,8 +111,11 @@ export function Cart({ lines, setLines, userId, shop, orders }: { lines: CartLin
     try {
       const value = await post<CheckoutResult>('/checkout', request);
       // Complete the saved request even if the user navigated away while it was in flight.
-      try { sessionStorage.removeItem(pendingKey); } catch { /* Storage is optional. */ }
-      if (value.status === 'approved') setLines([]);
+      try {
+        const saved = JSON.parse(sessionStorage.getItem(pendingKey) ?? 'null');
+        if (saved?.idempotency_key === request.idempotency_key) sessionStorage.removeItem(pendingKey);
+      } catch { /* Storage is optional. */ }
+      if (value.status === 'approved') completeCheckout(request);
       if (mounted.current) { setAttempt(null); setResult(value); if (value.status === 'declined') setQuote(null); }
     } catch (e) {
       if (mounted.current) {

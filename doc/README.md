@@ -9,7 +9,7 @@ Store every project requirement, process description, diagram, architecture deci
 | [v0.1.0](v0.1.0/README.md) | 2026-10-24 | Initial project, requirements, design, and evaluation baseline | Documentation only; application not implemented |
 | [v0.2.0](v0.2.0/README.md) | 2026-10-24 | Same-day English MVP, implementation diagrams, tests and synthetic AI evaluation | Local application implemented; live OpenRouter verification pending key |
 | [v0.2.1](v0.2.1/README.md) | 2026-10-24 | Shared-browser session changes and polling lifecycle regression fix | Frontend fix; new same-page/shared-tab browser checks; no schema migration |
-| [v0.3.0](v0.3.0/README.md) | 2026-10-24 | Catalog, simulated checkout, audit fixes, and Supabase/Vercel/Oracle configuration | Draft; implementation and local verification in progress, cloud setup requires accounts |
+| [v0.3.0](v0.3.0/README.md) | 2026-10-25 | Catalog, simulated checkout, audit fixes, and Supabase/Vercel/Oracle configuration | Implemented and locally verified; hosting accounts and deployed smoke checks remain operator setup |
 
 Dates use Asia/Karachi unless an evidence record explicitly says otherwise.
 

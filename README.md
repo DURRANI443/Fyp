@@ -4,7 +4,7 @@ A custom final-year project for customer support, knowledge-grounded answers, or
 
 ## Current status
 
-**v0.3.0 is an unfinished development checkpoint**, saved at the user's request before final integration checks. See [the handoff note](doc/v0.3.0/handoff.md) for exact remaining work. Its source adds a photographed demonstration catalog, size selection, cart, approved/declined simulated payments and order receipts to the existing support portal. Product prices, inventory, shipping and customers are demo data. No actual payment or delivery occurs.
+**v0.3.0 is ready for the documented FYP deployment.** It includes ten photographed demonstration products, size selection, cart, server-priced review, approved/declined simulated payments, order receipts, customer support, staff handoff, and admin management. Local verification passed: **95 backend tests on SQLite, 95 on PostgreSQL, 40 frontend tests, and eight browser workflows**. See [verification](doc/v0.3.0/verification.md) for scope and limits. Prices, inventory, shipping and customers are demo data; money and delivery remain simulated.
 
 Deployment configuration is included for **Supabase PostgreSQL + Vercel frontend + Oracle backend**. Those services still require your accounts and deployment configuration. The optional OpenRouter adapter requires your backend API key and a currently available reviewed free endpoint.
 
@@ -40,9 +40,9 @@ These accounts contain synthetic data. No real payment or refund transfer is per
 
 Tabs in the same browser profile share one sign-in. Logging in or out in one tab clears the previous workspace in the other tabs. For a simultaneous customer/staff demonstration, use separate browser profiles or a normal window plus an incognito window.
 
-To update an existing local checkout, stop its server, run `npm --prefix frontend run build`, then run `scripts/start.ps1` and refresh portal tabs. Startup applies the additive migration and reference catalog update while preserving accounts, existing inventory, orders, and conversations. A new checkout reserves stock; cancelling that checkout restores it once. Original seeded orders remain demo fixtures.
+To update an existing local checkout, stop its server, run `scripts/start.ps1`, and refresh portal tabs. Startup now rebuilds the frontend by default, applies the additive migration and reference catalog update, and preserves accounts, existing inventory, orders, and conversations. Use `-SkipBuild` only when you intentionally want the existing build. A new checkout reserves stock; cancelling that checkout restores it once. Original seeded orders remain demo fixtures.
 
-For a purchase walkthrough: sign in as Customer, choose a product size, add it to the cart, review checkout, use fictional shipping details, and choose a simulated approval or decline. Approved purchases appear in My Orders and can use the existing support/cancellation flows. A decline creates no order. No payment-card details are requested.
+For a purchase walkthrough: sign in as Customer, choose a product size, add it to the cart, review checkout, and choose a simulated approval or decline. Checkout shows the preset fictional shipping address. Approved purchases appear in My Orders and can use the existing support/cancellation flows. A decline creates no order. No payment-card details are requested.
 
 ## Technology direction
 

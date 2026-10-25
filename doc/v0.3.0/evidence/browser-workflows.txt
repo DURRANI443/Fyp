@@ -1,0 +1,31 @@
+
+> northstar-support-frontend@0.3.0 test:e2e
+> playwright test
+
+[WebServer] INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+[WebServer] INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+[WebServer] INFO  [alembic.runtime.migration] Running upgrade  -> e47fda0400ac, initial_schema
+[WebServer] INFO  [alembic.runtime.migration] Running upgrade e47fda0400ac -> 91bb428af032, Add product media, order snapshots and simulated checkout receipts.
+[WebServer] INFO:     Started server process [29732]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Preparing local AI. A cached embedding model can take about a minute on first load.
+[WebServer] INFO:     Local AI ready: tfidf_fallback
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+
+Running 8 tests using 1 worker
+
+(node:18212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:18212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\checkout.spec.ts:10:1 › purchase persists, supports order questions, and cancellation refunds demo stock (7.6s)
+  ok 2 e2e\checkout.spec.ts:57:1 › mobile decline keeps the cart and a fresh approval creates one order (2.8s)
+  ok 3 e2e\session-switch.spec.ts:46:1 › same-page customer to staff switch stops customer polling and preserves the staff reply (17.1s)
+  ok 4 e2e\session-switch.spec.ts:88:1 › another tab changing the shared account clears the old customer workspace and stops polling (19.8s)
+  ok 5 e2e\workflows.spec.ts:11:1 › customer can ask a grounded question and hand off to a staff member (14.7s)
+  ok 6 e2e\workflows.spec.ts:49:1 › orders require confirmation and a return appears in the staff review queue (7.9s)
+  ok 7 e2e\workflows.spec.ts:86:1 › admin can approve knowledge, update routing availability and inspect activity (4.9s)
+  ok 8 e2e\workflows.spec.ts:114:1 › mobile customer can navigate, inspect order eligibility and use support without overflow (3.6s)
+
+  8 passed (2.1m)

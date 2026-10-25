@@ -6,6 +6,8 @@ The existing modular monolith remains. Product facts come from the database. Pho
 
 Submitting a reviewed cart includes a customer-generated idempotency key. The backend checks authenticated identity, CSRF, the review token, and inventory before committing a simulated payment result. An approved result creates an order and order-item snapshots together with the inventory update. A declined result is still a completed simulation, with no order or inventory reservation. Retrying after an uncertain network response preserves the exact key and payload.
 
+Cart state is scoped to the customer in session storage. Settling an approved payment subtracts only its purchased product/size quantities from the current cart and remembers the completed key. Additions made after submission survive, and simultaneous original/retry responses cannot subtract the same purchase twice. Clearing a saved attempt also checks its key so an old response cannot erase a newer pending request.
+
 Order snapshots retain historical item names and unit prices when catalog descriptions later change. Original seeded orders are distinguished from new inventory-reserving purchases, so cancelling an old fixture cannot incorrectly add stock. Return approval remains a support decision; it does not imply receipt of goods or a real refund.
 
 ## Hosting boundaries

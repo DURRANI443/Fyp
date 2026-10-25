@@ -165,12 +165,14 @@ def test_malformed_provider_output_never_becomes_customer_answer(reply):
 
 
 def test_redaction_removes_keys_ids_and_payment_numbers():
-    text = "sk-or-v1-abcdef 4111 1111 1111 1111 123e4567-e89b-12d3-a456-426614174000 ORD-1004"
+    text = "sk-or-v1-abcdef 4111 1111 1111 1111 123e4567-e89b-12d3-a456-426614174000 ORD-1004 NS-ABC4E912340F order tracking"
     result = redact(text)
     assert "abcdef" not in result
     assert "4111" not in result
     assert "e89b" not in result
     assert "1004" not in result
+    assert "ABC4E912340F" not in result
+    assert "order tracking" in result
 
 
 def test_prompt_injection_cannot_change_model_or_create_actions():

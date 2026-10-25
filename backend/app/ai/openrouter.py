@@ -36,7 +36,7 @@ def redact(text: str) -> str:
     text = re.sub(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", "[redacted-email]", text)
     text = re.sub(r"\b[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}\b", "[redacted-id]", text)
     text = re.sub(r"(?<!\w)(?:\+?\d[\d ().-]{7,}\d)(?!\w)", "[redacted-number]", text)
-    text = re.sub(r"\b(?:NS|ORD|ORDER)[-# ]?\d+\b", "[redacted-order]", text, flags=re.I)
+    text = re.sub(r"\bNS-[A-Z0-9]{3,}\b|\b(?:ORD|ORDER)[-# ]?\d+\b", "[redacted-order]", text, flags=re.I)
     text = re.sub(r"\b(?:my name is|my address is)\s+[^.!?\n]+", "[redacted-identity]", text, flags=re.I)
     return text
 

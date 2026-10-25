@@ -1,9 +1,9 @@
-param([int]$Port = 8000)
+param([int]$Port = 8000, [switch]$SkipBuild)
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = Split-Path -Parent $PSScriptRoot
 $PythonExe = Join-Path $ProjectRoot '.venv/Scripts/python.exe'
 if (-not (Test-Path -LiteralPath $PythonExe)) { throw 'Run .\scripts\setup.ps1 first.' }
-if (-not (Test-Path -LiteralPath (Join-Path $ProjectRoot 'frontend/dist/index.html'))) {
+if (-not $SkipBuild -or -not (Test-Path -LiteralPath (Join-Path $ProjectRoot 'frontend/dist/index.html'))) {
     Push-Location (Join-Path $ProjectRoot 'frontend')
     try {
         & npm.cmd run build

@@ -1,0 +1,54 @@
+erDiagram
+    USERS ||--o{ ORDERS : owns
+    USERS ||--o{ PAYMENT_ATTEMPTS : simulates
+    USERS ||--o{ IDEMPOTENCY_RECORDS : retries
+    ORDERS ||--|{ ORDER_ITEMS : snapshots
+    ORDERS o|--o| PAYMENT_ATTEMPTS : has
+    PRODUCTS ||--o{ ORDER_ITEMS : identifies
+    USERS {
+        string id PK
+        string role
+    }
+    PRODUCTS {
+        string id PK
+        string sku UK
+        string image_url
+        string image_alt
+        integer price_cents
+        integer stock
+        json sizes
+    }
+    ORDERS {
+        string id PK
+        string number UK
+        string customer_id FK
+        string status
+        integer total_cents
+        boolean inventory_reserved
+        json shipping_address
+        integer version
+    }
+    ORDER_ITEMS {
+        string id PK
+        string order_id FK
+        string product_id FK
+        string name
+        integer quantity
+        integer price_cents
+        string size
+        string image_url
+    }
+    PAYMENT_ATTEMPTS {
+        string id PK
+        string user_id FK
+        string order_id FK
+        string reference UK
+        string status
+        integer amount_cents
+    }
+    IDEMPOTENCY_RECORDS {
+        string user_id FK
+        string key
+        string fingerprint
+        json result
+    }

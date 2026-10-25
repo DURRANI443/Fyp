@@ -1,0 +1,62 @@
+{
+  "observed_on": "2026-10-25",
+  "timezone": "Asia/Karachi",
+  "scope": "local validation and hosting preparation; no live cloud deployment",
+  "python": "3.13.14",
+  "host_platform": "Windows",
+  "sqlite_backend": {
+    "passed": 95,
+    "seconds": 32.82
+  },
+  "postgresql_backend": {
+    "passed": 95,
+    "seconds": 313.88,
+    "server": "17.11"
+  },
+  "frontend_vitest": {
+    "passed": 40,
+    "seconds": 37.57
+  },
+  "browser_workflows": {
+    "passed": 8,
+    "reported_duration": "2.1 minutes"
+  },
+  "final_ai_privacy_regression": {
+    "passed": 30,
+    "seconds": 3.34
+  },
+  "frontend_production_build": "passed",
+  "postgresql_schema": {
+    "server": "17.11",
+    "migration": "91bb428af032",
+    "users": 4,
+    "products": 10,
+    "orders": 5,
+    "knowledge_documents": 8
+  },
+  "arm_wheel_resolution": {
+    "passed": true,
+    "packages": 46,
+    "runtime_executed": false
+  },
+  "core_lock_sha256_lf_normalized": "38f612c1f119efc30f2764d85e99275918aae049e54e7bed37ff759aac1f0df6",
+  "live_hosting": "not created by owner yet",
+  "live_openrouter": "no key configured",
+  "provenance": "Test totals transcribed from completed tool executions; browser console and pip wheel summary retained alongside this file.",
+  "frontend_runtime_audit": {
+    "vulnerabilities": 0,
+    "command": "npm audit --omit=dev --audit-level=high --json"
+  },
+  "existing_local_demo_upgrade": {
+    "preserved_counts": {
+      "users": 4,
+      "orders": 5,
+      "order_items": 7,
+      "conversations": 5,
+      "messages": 21,
+      "tickets": 4
+    },
+    "products": 10,
+    "migration": "91bb428af032"
+  }
+}
